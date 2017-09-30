@@ -1,4 +1,6 @@
-/bo/
-/testes/
-/dao/
 /beans/
+/bo/
+/conexao/
+/dao/
+/lib/
+/testes/
