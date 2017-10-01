@@ -2,46 +2,54 @@ package beans;
 
 public class Fornecedor extends PessoaJuridica{
 	
+	private int id_fornecedor;
 	private String numeroContrato;
-	private String vigenciaContrato;
 	private String gerenteContrato;
 	
 	public String getAll() {
-		return numeroContrato + "\n" + vigenciaContrato + gerenteContrato;
+		return id_fornecedor + "\n" + numeroContrato + "\n" + gerenteContrato;
 		
 	}
 	
-	public void setAll (String nc, String vc, String gc) {
+	public void setAll (int id, String nc, String gc) {
+		id_fornecedor = id;
 		numeroContrato = nc;
-		vigenciaContrato = vc;
 		gerenteContrato = gc;
 	
 	}
 	
+
 	public Fornecedor() {
 		super();
 	}
-	public Fornecedor(String numeroContrato, String vigenciaContrato, String gerenteContrato) {
+
+	public Fornecedor(int id_fornecedor, String numeroContrato, String gerenteContrato) {
 		super();
+		this.id_fornecedor = id_fornecedor;
 		this.numeroContrato = numeroContrato;
-		this.vigenciaContrato = vigenciaContrato;
 		this.gerenteContrato = gerenteContrato;
 	}
+
+	public int getId_fornecedor() {
+		return id_fornecedor;
+	}
+
+	public void setId_fornecedor(int id_fornecedor) {
+		this.id_fornecedor = id_fornecedor;
+	}
+
 	public String getNumeroContrato() {
 		return numeroContrato;
 	}
+
 	public void setNumeroContrato(String numeroContrato) {
 		this.numeroContrato = numeroContrato;
 	}
-	public String getVigenciaContrato() {
-		return vigenciaContrato;
-	}
-	public void setVigenciaContrato(String vigenciaContrato) {
-		this.vigenciaContrato = vigenciaContrato;
-	}
+
 	public String getGerenteContrato() {
 		return gerenteContrato;
 	}
+
 	public void setGerenteContrato(String gerenteContrato) {
 		this.gerenteContrato = gerenteContrato;
 	}

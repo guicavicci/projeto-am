@@ -2,93 +2,61 @@ package beans;
 
 public class Fatura
 {
-    private long numeroFatura;
-    private double consumoKwh;
-    private String dataVencimento;
-    private String formaPagamento;
-    private double taxaKwh;
+	private int id_fatura;
+	private String numeroFatura;
+    private String consumoKwh;
     private double valor;
-    
-    public Fatura(long numeroFatura, double consumoKwh, String dataVencimento, String formaPagamento, double taxaKwh)
-    {
-        setNumeroFatura(numeroFatura);
-        setConsumoKwh(consumoKwh);
-        setDataVencimento(dataVencimento);
-        setFormaPagamento(formaPagamento);
-        setTaxaKwh(taxaKwh);
-        valor = taxaKwh * consumoKwh;
-        setValor(valor);
+	
+    public String getAll() {
+    	
+    	return id_fatura + "\n" + numeroFatura + "\n" + consumoKwh + "\n" + valor;
+    	
     }
     
-    public Fatura(){}
+    public void setAll(int id, String nf, String c, double v) {
+    	id_fatura = id;
+    	numeroFatura = nf;
+    	consumoKwh = c;
+    	valor = v;
     
-    public String getAll()
-    {
-        return "N�mero Fatura: "+numeroFatura+
-                "\nConsumo (KW/h): "+consumoKwh+
-                "\nData de vencimento: "+dataVencimento+
-                "\nForma de Pagamento: "+formaPagamento+
-                "\nTaxa (Reais por KW/h)"+taxaKwh+
-                "\nValor: R$ "+valor;
     }
     
-    public void setAll(long numeroFatura, double consumoKwh, String dataVencimento, String formaPagamento, double taxaKwh, double valor)
-    {
-        setNumeroFatura(numeroFatura);
-        setConsumoKwh(consumoKwh);
-        setDataVencimento(dataVencimento);
-        setFormaPagamento(formaPagamento);
-        setTaxaKwh(taxaKwh);
-        setValor(valor);
-    }
-
-    public long getNumeroFatura() {
-        return numeroFatura;
-    }
-
-    public void setNumeroFatura(long numeroFatura) {
-        this.numeroFatura = numeroFatura;
-    }
-
-    public double getConsumoKwh() {
-        return consumoKwh;
-    }
-
-    public void setConsumoKwh(double consumoKwh) {
-        this.consumoKwh = consumoKwh;
-    }
-
-    public String getDataVencimento() {
-        return dataVencimento;
-    }
-
-    public void setDataVencimento(String dataVencimento) {
-        this.dataVencimento = dataVencimento;
-    }
-
-    public String getFormaPagamento() {
-        return formaPagamento;
-    }
-
-    public void setFormaPagamento(String formaPagamento) {
-        this.formaPagamento = formaPagamento;
-    }
-
-    public double getTaxaKwh() {
-        return taxaKwh;
-    }
-
-    public void setTaxaKwh(double taxaKwh) {
-        this.taxaKwh = taxaKwh;
-    }
+    public Fatura() {
+		super();
+	}
+	public Fatura(int id_fatura, String numeroFatura, String consumoKwh, double valor) {
+		super();
+		this.id_fatura = id_fatura;
+		this.numeroFatura = numeroFatura;
+		this.consumoKwh = consumoKwh;
+		this.valor = valor;
+	}
+	public int getId_fatura() {
+		return id_fatura;
+	}
+	public void setId_fatura(int id_fatura) {
+		this.id_fatura = id_fatura;
+	}
+	public String getNumeroFatura() {
+		return numeroFatura;
+	}
+	public void setNumeroFatura(String numeroFatura) {
+		this.numeroFatura = numeroFatura;
+	}
+	public String getConsumoKwh() {
+		return consumoKwh;
+	}
+	public void setConsumoKwh(String consumoKwh) {
+		this.consumoKwh = consumoKwh;
+	}
+	public double getValor() {
+		return valor;
+	}
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
     
-    public double getValor() {
-        return valor;
-    }
-
-    public void setValor(double valor) {
-        this.valor = valor;
-    }
+ 
     
     
 }

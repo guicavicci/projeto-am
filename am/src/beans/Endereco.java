@@ -1,56 +1,69 @@
 package beans;
 
 public class Endereco {
-    private String cep;
+    private int id_endereco;
     private String rua;
     private int numero;
     private String cidade;
 
-    public Endereco() {
-        super();
-    }    
-    public Endereco(String cep, String rua, int numero, String cidade) {
-        super();
-        setCep(cep);
-        setRua(rua);
-        setNumero(numero);
-        setCidade(cidade);
-    }
-
-    public String getCep() {
-        return cep;
-    }
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
-    public String getRua() {
-        return rua;
-    }
-    public void setRua(String rua) {
-        this.rua = rua;
-    }
-    public int getNumero() {
-        return numero;
-    }
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
-    public String getCidade() {
-        return cidade;
-    }
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
     public String getAll() {
-        return "\n" + cep + "\n" + rua + "\n" + numero + "\n" + cidade; 
+        return  id_endereco + "\n" + rua + "\n" + numero + "\n" + cidade; 
     }
     
-    public void setAll(String c, String r, int n, String cid){
-        cep = c;
+    public void setAll(int id, String r, int n, String cid){
+        id_endereco = id;
         rua = r;
         numero = n;
         cidade = cid;
     }
+    
+    
+
+	public Endereco() {
+		super();
+	}
+
+	public Endereco(int id_endereco, String rua, int numero, String cidade) {
+		super();
+		this.id_endereco = id_endereco;
+		this.rua = rua;
+		this.numero = numero;
+		this.cidade = cidade;
+	}
+
+	public int getId_endereco() {
+		return id_endereco;
+	}
+
+	public void setId_endereco(int id_endereco) {
+		this.id_endereco = id_endereco;
+	}
+
+	public String getRua() {
+		return rua;
+	}
+
+	public void setRua(String rua) {
+		this.rua = rua;
+	}
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+    
+    
 }
 
 

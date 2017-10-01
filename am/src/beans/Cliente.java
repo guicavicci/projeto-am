@@ -1,51 +1,62 @@
 package beans;
 
 public class Cliente {
-    private String numeroInstalacao;
-	private String atualizacaoCadastral;
+    private int id_cliente;
+	private String numeroInstalacao;
     private String debitoPendente;
     
     public String getAll() {
-        return atualizacaoCadastral + "\n" + numeroInstalacao + "\n" + debitoPendente;
+        return id_cliente + "\n" + numeroInstalacao + "\n" + debitoPendente;
         
     }
     
-    public void setAll( String ac, String ni, String dp) {
-        atualizacaoCadastral=ac;
+    public void setAll(int id, String ac, String ni, String dp) {
+        id_cliente=id;
         numeroInstalacao=ni;
         debitoPendente=dp;
         
     }
     
-    public Cliente() {
-        super();
-    }
-    public Cliente(String numeroInstalacao, String atualizacaoCadastral, String debitoPendente) {
-        this.numeroInstalacao = numeroInstalacao;
-    	this.atualizacaoCadastral = atualizacaoCadastral;
-        this.debitoPendente = debitoPendente;
-    }
-    public String getAtualizacaoCadastral() {
-        return atualizacaoCadastral;
-    }
-    public void setAtualizacaoCadastral(String atualizacaoCadastral) {
-        this.atualizacaoCadastral = atualizacaoCadastral;
-    }
-    public String getNumeroInstalacao() {
-        return numeroInstalacao;
-    }
-    public void setNumeroInstalacao(String numeroInstalacao) {
-        this.numeroInstalacao = numeroInstalacao;
-    }
-    public String getDebitoPendente() {
-        return debitoPendente;
-    }
-    public void setDebitoPendente(String debitoPendente) {
-        this.debitoPendente = debitoPendente;
-    }
-    
     
 
+	public Cliente() {
+		super();
+	}
+
+	public Cliente(int id_cliente, String numeroInstalacao, String debitoPendente) {
+		super();
+		this.id_cliente = id_cliente;
+		this.numeroInstalacao = numeroInstalacao;
+		this.debitoPendente = debitoPendente;
+	}
+
+	public int getId_cliente() {
+		return id_cliente;
+	}
+
+	public void setId_cliente(int id_cliente) {
+		this.id_cliente = id_cliente;
+	}
+
+	public String getNumeroInstalacao() {
+		return numeroInstalacao;
+	}
+
+	public void setNumeroInstalacao(String numeroInstalacao) {
+		this.numeroInstalacao = numeroInstalacao;
+	}
+
+	public String getDebitoPendente() {
+		return debitoPendente;
+	}
+
+	public void setDebitoPendente(String debitoPendente) {
+		this.debitoPendente = debitoPendente;
+	}
+    
+    
+    
+    
 }
 
 
