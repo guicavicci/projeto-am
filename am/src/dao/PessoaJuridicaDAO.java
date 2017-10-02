@@ -27,7 +27,7 @@ public class PessoaJuridicaDAO {
 		public String gravar(PessoaJuridica pj) throws Exception {
 			PreparedStatement estrutura = null;
 			estrutura = con.prepareStatement
-					("INSERT INTO Pessoa (id, nome, email, telefone, numero_contrato, razao_social, inscricao_estadual) VALUES(?,?,?,?,?,?,?)");
+					("INSERT INTO PESSOA_JURIDICA (id, nome, email, telefone, numero_contrato, razao_social, inscricao_estadual) VALUES(?,?,?,?,?,?,?)");
 			estrutura.setInt (1,pj.getId());
 			estrutura.setString (2,pj.getNome());
 			estrutura.setString (3,pj.getEmail());

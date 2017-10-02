@@ -9,6 +9,8 @@ import conexao.ConexaoFactory;
 
 public class PessoaFisicaDAO {
 	private Connection con;
+	private PreparedStatement estrutura;
+	private ResultSet resultado;
 	
 	public PessoaFisicaDAO () throws Exception {
 		con = new ConexaoFactory().conectar();
@@ -24,16 +26,13 @@ public class PessoaFisicaDAO {
 	}
 	
 	public String gravar(PessoaFisica pf) throws Exception {
-		PreparedStatement estrutura = null;
 		estrutura = con.prepareStatement
-				("INSERT INTO Pessoa (id, nome, email, telefone, cpf, rg, data_nascimento) VALUES(?,?,?,?,?,?,?)");
-		estrutura.setInt (1,pf.getId());
+				("INSERT INTO PESSOA_FISICA (id_pf, nome, cpf, rg, idade) VALUES(?,?,?,?,?)");
+		estrutura.setInt (1,pf.getId_pf());
 		estrutura.setString (2,pf.getNome());
-		estrutura.setString (3,pf.getEmail());
-		estrutura.setString(4, pf.getTelefone());
 		estrutura.setString(5, pf.getCpf());
 		estrutura.setString(6, pf.getRg());
-		estrutura.setString(7, pf.getDataNascimento());
+		estrutura.setString(7, pf.getIdade());
 		estrutura.execute();
 		estrutura.close();
 		return "Gravado com sucesso";
@@ -43,18 +42,15 @@ public class PessoaFisicaDAO {
 	
 	public PessoaFisica getPessoaFisica(int n) throws Exception{
 		PessoaFisica pf = new PessoaFisica();
-		PreparedStatement estrutura = null;
 		estrutura = con.prepareStatement
-				("SELECT nome, email, telefone, cpf, rg, data_nascimento FROM Pessoa WHERE id = ?");
+				("SELECT id_pf, nome, cpf, rg, idade FROM PESSOA_FISICA WHERE id_pf = ?");
 		estrutura.setInt (1,n);
-		ResultSet resultado = estrutura.executeQuery();							
+		resultado = estrutura.executeQuery();							
 		if(resultado.next()) {
 			pf.setNome(resultado.getString("nome"));
-			pf.setEmail(resultado.getString("email"));
-			pf.setTelefone(resultado.getString("telefone"));
 			pf.setCpf(resultado.getString("cpf"));
 			pf.setRg(resultado.getString("rg"));
-			pf.setDataNascimento(resultado.getString("data_nascimento"));
+			pf.setIdade(resultado.getString("idade"));
 
 
 		}
@@ -64,19 +60,19 @@ public class PessoaFisicaDAO {
 
 	}
 	
-	public int delete (int num) throws Exception {
-		PreparedStatement estrutura = con.prepareStatement("DELETE FROM Pessoa WHERE id = ?");
-		estrutura.setInt(1, num);
-		int i = estrutura.executeUpdate();
+	public int delete (int i) throws Exception {
+		estrutura = con.prepareStatement("DELETE FROM PESSOA_FISICA WHERE id_pf = ?");
+		estrutura.setInt(1, i);
+		int x = estrutura.executeUpdate();
 		estrutura.close();
-		return i;
+		return x;
 		
 	}
 	
 	
-	public String atualizarEmail (String x, int y) throws Exception{
-		PreparedStatement estrutura = con.prepareStatement
-		("UPDATE Pessoa SET email = ? WHERE id =?");
+	public String corrigeCPF(String x, int y) throws Exception{
+		estrutura = con.prepareStatement
+		("UPDATE PESSOA_FISICA SET cpf = ? WHERE id_pf =?");
 		estrutura.setString(1,  x);
 		estrutura.setInt(2, y);
 		int z = estrutura.executeUpdate();

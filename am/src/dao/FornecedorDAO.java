@@ -10,6 +10,7 @@ import conexao.ConexaoFactory;
 public class FornecedorDAO {
     
         private Connection con;
+        private PreparedStatement estrutura;
         
         public FornecedorDAO () throws Exception {
             con = new ConexaoFactory().conectar();
@@ -23,11 +24,10 @@ public class FornecedorDAO {
     
 
         public String adcFornecedor(Fornecedor forn) throws Exception {
-            PreparedStatement estrutura = null;
             estrutura = con.prepareStatement
-                    ("INSERT INTO Fornecedor (numero_contrato, vigencia_contrato, gerente_contrato) VALUES(?,?,?)");
-            estrutura.setString(1, forn.getNumeroContrato());
-            estrutura.setString(2, forn.getVigenciaContrato());
+                    ("INSERT INTO Fornecedor (ID_FORNECEDOR, NUMERO_CONTRATO, GERENTE_CONTRATO) VALUES(?,?,?)");
+            estrutura.setInt(1, forn.getId_fornecedor());
+            estrutura.setString(2, forn.getNumeroContrato());
             estrutura.setString(3, forn.getGerenteContrato());
             estrutura.execute();
             estrutura.close();
@@ -35,34 +35,33 @@ public class FornecedorDAO {
         
         }
         
-        public int delete(String nc) throws Exception {
-            PreparedStatement estrutura = con.prepareStatement ("delete from Fornecedor where numero_contrato = ?");
-            estrutura.setString(1, nc);
-            int i = estrutura.executeUpdate();
+        public int delete(int i) throws Exception {
+            PreparedStatement estrutura = con.prepareStatement ("delete from Fornecedor where ID_FUNCIONARIO = ?");
+            estrutura.setInt(1, i);
+            int x = estrutura.executeUpdate();
             estrutura.close();
-            return i;
+            return x;
         
 }
 
-        public String alterarGerente(String gerente, String nc) throws Exception {
-            PreparedStatement estrutura = con.prepareStatement("update Fornecedor set gerente_contrato = ? where numero_contrato = ?");
+        public String alterarGerente(String gerente, int i) throws Exception {
+            PreparedStatement estrutura = con.prepareStatement
+            ("update Fornecedor set GERENTE_CONTRATO = ? where ID_FORNECEDOR = ?");
             estrutura.setString(1, gerente);
-            estrutura.setString(2, nc);
+            estrutura.setInt(2, i);
             estrutura.executeUpdate();
             estrutura.close();
             return "Alterado com sucesso";
         }
         
-        public Fornecedor getFornecedor(String ni) throws Exception{
+        public Fornecedor getFornecedor(int i) throws Exception{
             Fornecedor forn = new Fornecedor();
-            PreparedStatement estrutura = null;
             estrutura = con.prepareStatement
-                    ("SELECT numero_contrato, vigencia_contrato, gerente_contrato FROM Fornecedor WHERE numero_contrato = ?");
-            estrutura.setString (1,ni);
+                    ("SELECT NUMERO_CONTRATO, GERENTE_CONTRATO FROM Fornecedor WHERE ID_FORNECEDOR = ?");
+            estrutura.setInt (1,i);
             ResultSet resultado = estrutura.executeQuery();                            
             if(resultado.next()) {
                 forn.setNumeroContrato(resultado.getString("numero_contrato"));
-                forn.setVigenciaContrato(resultado.getString("vigencia_contrato"));
                 forn.setGerenteContrato(resultado.getString("gerente_contrato"));    
                 
             }
