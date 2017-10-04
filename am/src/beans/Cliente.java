@@ -1,17 +1,20 @@
 package beans;
 
+import java.util.List;
+
 public class Cliente {
     private int id_cliente;
 	private String numeroInstalacao;
     private String debitoPendente;
-    private Fatura fatura;
+    private List<Fatura> fatura;
     
     public String getAll() {
         return id_cliente + "\n" + numeroInstalacao + "\n" + debitoPendente + "\n" + fatura;
         
     }
     
-    public void setAll(int id, String ac, String ni, String dp, Fatura f) {
+ 
+    public void setAll(int id, String ac, String ni, String dp, List<Fatura> f) {
         id_cliente=id;
         numeroInstalacao=ni;
         debitoPendente=dp;
@@ -19,18 +22,19 @@ public class Cliente {
         
     }
     
-    
-	public Cliente() {
+    public Cliente() {
 		super();
 	}
 
-	public Cliente(int id_cliente, String numeroInstalacao, String debitoPendente, Fatura fatura) {
+
+	public Cliente(int id_cliente, String numeroInstalacao, String debitoPendente, List<Fatura> fatura) {
 		super();
 		this.id_cliente = id_cliente;
 		this.numeroInstalacao = numeroInstalacao;
 		this.debitoPendente = debitoPendente;
 		this.fatura = fatura;
 	}
+
 
 	public int getId_cliente() {
 		return id_cliente;
@@ -56,15 +60,16 @@ public class Cliente {
 		this.debitoPendente = debitoPendente;
 	}
 
-	public Fatura getFatura() {
+	public List<Fatura> getFatura() {
 		return fatura;
 	}
 
-	public void setFatura(Fatura fatura) {
+	public void setFatura(List<Fatura> fatura) {
 		this.fatura = fatura;
 	}
     
     
+	
     
 }
 
