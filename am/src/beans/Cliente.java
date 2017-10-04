@@ -4,30 +4,32 @@ public class Cliente {
     private int id_cliente;
 	private String numeroInstalacao;
     private String debitoPendente;
+    private Fatura fatura;
     
     public String getAll() {
-        return id_cliente + "\n" + numeroInstalacao + "\n" + debitoPendente;
+        return id_cliente + "\n" + numeroInstalacao + "\n" + debitoPendente + "\n" + fatura;
         
     }
     
-    public void setAll(int id, String ac, String ni, String dp) {
+    public void setAll(int id, String ac, String ni, String dp, Fatura f) {
         id_cliente=id;
         numeroInstalacao=ni;
         debitoPendente=dp;
+        fatura=f;
         
     }
     
     
-
 	public Cliente() {
 		super();
 	}
 
-	public Cliente(int id_cliente, String numeroInstalacao, String debitoPendente) {
+	public Cliente(int id_cliente, String numeroInstalacao, String debitoPendente, Fatura fatura) {
 		super();
 		this.id_cliente = id_cliente;
 		this.numeroInstalacao = numeroInstalacao;
 		this.debitoPendente = debitoPendente;
+		this.fatura = fatura;
 	}
 
 	public int getId_cliente() {
@@ -53,7 +55,14 @@ public class Cliente {
 	public void setDebitoPendente(String debitoPendente) {
 		this.debitoPendente = debitoPendente;
 	}
-    
+
+	public Fatura getFatura() {
+		return fatura;
+	}
+
+	public void setFatura(Fatura fatura) {
+		this.fatura = fatura;
+	}
     
     
     

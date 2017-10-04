@@ -30,13 +30,15 @@ public class FaturaDAO
     public String criar(Fatura fatura)throws Exception
     {
          estrutura = con.prepareStatement
-        ("INSERT INTO FATURA (ID_FATURA, NUMERO_FATURA, CONSUMO_KWH, VALOR) VALUES (?,?,?,?)");
+        ("INSERT INTO FATURA (ID_FATURA, NUMERO_FATURA, CONSUMO_KWH, VALOR, ID_CLIENTE) VALUES (?,?,?,?)");
         estrutura.setInt(1, fatura.getId_fatura());
         estrutura.setString(2, fatura.getNumeroFatura());
         estrutura.setString(3, fatura.getConsumoKwh());
         estrutura.setDouble(4, fatura.getValor());
         int nm = estrutura.executeUpdate();
         estrutura.close();
+        
+        
         return nm + " linha foi criada!";
     }
     //Pegar fatura
