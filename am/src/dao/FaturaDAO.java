@@ -3,6 +3,8 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import beans.Fatura;
 import conexao.ConexaoFactory;
@@ -42,22 +44,33 @@ public class FaturaDAO
         return nm + " linha foi criada!";
     }
     //Pegar fatura
-    public Fatura getFatura(int i) throws Exception
+    public List<Fatura> consultarPorCLiente(int i) throws Exception
     {
-        Fatura fatura = new Fatura();
+    	List<Fatura> lista = new ArrayList <>();
         estrutura = con.prepareStatement
-        ("SELECT * FROM FATURA WHERE ID_FATURA = ?");
-        estrutura.setLong(1, i);
+        ("SELECT id_fatura, NUMERO_FATURA, CONSUMO_KWH,  FROM FATURA, VALOR WHERE ID_CLIENTE = ?");
+        estrutura.setInt(1, i);
         resultado = estrutura.executeQuery();
-        if(resultado.next())
+        while(resultado.next())
         {
-        	fatura.setId_fatura(resultado.getInt("ID_FATURA"));
-        	fatura.setNumeroFatura(resultado.getString("NUMERO_FATURA"));
-        	fatura.setConsumoKwh(resultado.getString("CONSUMO_KWH"));
-        	fatura.setValor(resultado.getDouble("VALOR"));
+        	lista.add( new Fatura (
+        			  resultado.getInt("id_fatura"),
+        			  resultado.getString("NUMERO_FATURA"),
+        			  resultado.getString("CONSUMO_KWH"),
+        			  resultado.getDouble("VALOR")
+        			
+        			));
+        	
+   
+        	
         }
-        return fatura;
+        
+     	return lista;
+        	
+			
     }
+
+    /*
     //Deletar fatura
     public int delete(int i)throws Exception
     {
@@ -67,7 +80,8 @@ public class FaturaDAO
         int x = estrutura.executeUpdate();
         estrutura.close();
         return x;
-    }
+    } */
+    
     public int adicionarJuros(double taxa, int i) throws Exception
     {
         PreparedStatement estrutura = con.prepareStatement

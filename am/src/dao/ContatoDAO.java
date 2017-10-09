@@ -3,9 +3,11 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import beans.Contato;
-import beans.Endereco;
+import beans.Fornecedor;
 import conexao.ConexaoFactory;
 
 public class ContatoDAO {
@@ -26,45 +28,57 @@ public class ContatoDAO {
 		
 	}
 
-	public String gravarContato(Contato cont) throws Exception{
+	public String gravarContato(Fornecedor f) throws Exception{
 		
-		
-		estrutura = con.prepareStatement("INSERT INTO CONTATO (ID_CONTATO, TELEFONE, EMAIL, FACEBOOK) VALUES (?,?,?,?)");
+		for (Contato cont : f.getContato()) {
+			
+		estrutura = con.prepareStatement("INSERT INTO CONTATO (ID_CONTATO, TELEFONE, EMAIL, FACEBOOK, ID_CLIENTE) VALUES (?,?,?,?,?)");
 		estrutura.setInt(1, cont.getId_contato());
 		estrutura.setString(2, cont.getTelefone());
 		estrutura.setString(3, cont.getEmail());
 		estrutura.setString(4, cont.getFacebook());
+		estrutura.setInt(5, f.getId_fornecedor());
 		
-		int x = estrutura.executeUpdate();
-			
+		estrutura.executeUpdate();
 		estrutura.close();
+		}
 		
-		return "Total de: " + x + "Linhas inseridas";
+		return "Gravado com sucesso";
 	}
 	
 	
-	public Contato getContato (int i) throws Exception {
+	public List<Contato> getContatoPorFornecedor (int i) throws Exception {
 		
-		Contato cont = new Contato();
+		List<Contato> lista = new ArrayList<>();
 		estrutura.getConnection().prepareStatement
-		("SELECT ID_CONTATO, TELEFONE, EMAIL, FACEBOOK FROM CONTATO WHERE ID_CONTATO = ?");
+		("SELECT ID_CONTATO, TELEFONE, EMAIL, FACEBOOK FROM CONTATO WHERE ID_Forncedor = ?");
 		estrutura.setInt(1, i);
 		rs = estrutura.executeQuery();
 		
-		if (rs.next()){
-			cont.setId_contato(rs.getInt("ID_CONTATO"));
-			cont.setTelefone(rs.getString("TELEFONE"));
-			cont.setEmail(rs.getString("EMAIL"));
-			cont.setFacebook(rs.getString("FACEBOOK"));
+		while (rs.next())
 			
-		}
-		rs.close();
+			lista.add(new Contato(
+					rs.getInt("ID_CONTATO"),
+					rs.getString("TELEFONE"),
+					rs.getString("EMAIL"),
+					rs.getString("FACEBOOK")
+					
+					
+					
+					));
 		estrutura.close();
-		return cont;
+		rs.close();
+		return lista;
+				
+
+			
+	
 	}
 	
-	public String mudarTelefone (String tel, int i) throws Exception {
-		estrutura.getConnection().prepareStatement("UPDATE CONTATO SET TELEFONE = ? WHERE ID_CONTATO = ?");
+	public String mudarTelefonePorFornecedor (String tel, int i) throws Exception {
+		
+		
+		estrutura.getConnection().prepareStatement("UPDATE CONTATO SET TELEFONE = ? WHERE ID_FORNECEDOR = ?");
 		estrutura.setString(1, tel);
 		estrutura.setInt(2, i);
 		int x = estrutura.executeUpdate();
@@ -72,6 +86,8 @@ public class ContatoDAO {
 		return x + " Linhas atualizadas";
 		
 	}
+	
+	/*
 	
 	public String deletarContato (int i) throws Exception {
 		estrutura.getConnection().prepareStatement("DELETE FROM CONTATO WHERE ID = ?");
@@ -84,6 +100,6 @@ public class ContatoDAO {
 		return x + " Linhas excluidas";
 		
 		
-	}
+	} */
 	
 }

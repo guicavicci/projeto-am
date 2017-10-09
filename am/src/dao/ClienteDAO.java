@@ -24,7 +24,7 @@ public class ClienteDAO {
 	
 	public String gravarCliente(Cliente cliente) throws Exception {
 		estrutura = con.prepareStatement
-				("INSERT INTO Cliente (ID_CLIENTE, NUMERO_INSTALACAO, DEBITO PENDENTE) VALUES(?,?,?)");
+				("INSERT INTO Cliente (ID_CLIENTE, NUMERO_INSTALACAO, DEBITO PENDENTE, STATUS) VALUES(?,?,?)");
 		estrutura.setInt(1, cliente.getId_cliente());
 		estrutura.setString(2, cliente.getNumeroInstalacao());
 		estrutura.setString(3, cliente.getDebitoPendente());
@@ -36,7 +36,7 @@ public class ClienteDAO {
 	public Cliente selecionarCliente(int i) throws Exception{
 		Cliente cliente = new Cliente();
 		estrutura = con.prepareStatement
-				("SELECT ID_CLIENTE, NUMERO_INSTALACAO, DEBITO PENDENTE FROM CLIETE WHERE ID_CLIENTE = ?");
+				("SELECT ID_CLIENTE, NUMERO_INSTALACAO, DEBITO PENDENTE FROM CLIETE WHERE ID_CLIENTE = ? AND STATUS = 0");
 		estrutura.setInt(1, i);
 		rs = estrutura.executeQuery();							
 		if(rs.next()) {
@@ -51,6 +51,9 @@ public class ClienteDAO {
 
 	}
 	
+	
+	
+	/*
 	public int deletarCliente(int i) throws Exception {
 		PreparedStatement estrutura = con.prepareStatement("DELETE FROM CLIENTE WHERE ID_CLIENTE = ?");
 		estrutura.setInt(1, i);
@@ -58,7 +61,7 @@ public class ClienteDAO {
 		estrutura.close();
 		return x;
 		
-	}
+	} */
 	
 	public int atualizarDebitoPendente (Cliente cliente) throws Exception{
 		PreparedStatement estrutura = con.prepareStatement
