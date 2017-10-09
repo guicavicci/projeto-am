@@ -9,33 +9,37 @@ public class Fornecedor {
 	private String gerenteContrato;
 	private List<Contato> contato;
 	private List<Endereco> endereco;
+	private boolean status;
 	
 	public String getAll() {
-		return id_fornecedor + "\n" + numeroContrato + "\n" + gerenteContrato + "\n" + contato + "\n" + endereco;
+		return id_fornecedor + "\n" + numeroContrato + "\n" + gerenteContrato + "\n" + contato + "\n" + endereco + "\n" + status;
 		
 	}
 	
-	public void setAll (int id, String nc, String gc, List<Contato> c, List<Endereco> e  ) {
+	public void setAll (int id, String nc, String gc, List<Contato> c, List<Endereco> e, boolean s ) {
 		id_fornecedor = id;
 		numeroContrato = nc;
 		gerenteContrato = gc;
 		contato = c;
+		status = s;
 	
 	}
 	
 	
+
 	public Fornecedor() {
 		super();
 	}
 
 	public Fornecedor(int id_fornecedor, String numeroContrato, String gerenteContrato, List<Contato> contato,
-			List<Endereco> endereco) {
+			List<Endereco> endereco, boolean status) {
 		super();
 		this.id_fornecedor = id_fornecedor;
 		this.numeroContrato = numeroContrato;
 		this.gerenteContrato = gerenteContrato;
 		this.contato = contato;
 		this.endereco = endereco;
+		this.status = status;
 	}
 
 	public int getId_fornecedor() {
@@ -77,9 +81,16 @@ public class Fornecedor {
 	public void setEndereco(List<Endereco> endereco) {
 		this.endereco = endereco;
 	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 	
-
-
+	
 	
 }
 	

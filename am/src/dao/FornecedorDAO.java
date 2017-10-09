@@ -25,10 +25,11 @@ public class FornecedorDAO {
 
         public String adcFornecedor(Fornecedor forn) throws Exception {
             estrutura = con.prepareStatement
-                    ("INSERT INTO Fornecedor (ID_FORNECEDOR, NUMERO_CONTRATO, GERENTE_CONTRATO) VALUES(?,?,?)");
+                    ("INSERT INTO Fornecedor (ID_FORNECEDOR, NUMERO_CONTRATO, GERENTE_CONTRATO, STATUS) VALUES(?,?,?,?)");
             estrutura.setInt(1, forn.getId_fornecedor());
             estrutura.setString(2, forn.getNumeroContrato());
             estrutura.setString(3, forn.getGerenteContrato());
+            estrutura.setBoolean(3, forn.isStatus());
             estrutura.execute();
             estrutura.close();
             return "Gravado com sucesso";
