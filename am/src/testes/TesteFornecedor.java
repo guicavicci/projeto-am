@@ -75,6 +75,7 @@ public class TesteFornecedor {
                 		texto("Digite o facebook:"));
                     	
                     	fornecedor.getContatos().add(contato);
+                    	
                     	newContato = textboo ("Digite [sim] para cadastrar um novo contato, e [não] para sair");
                     	
                     }

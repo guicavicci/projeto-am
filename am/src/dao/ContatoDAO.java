@@ -32,7 +32,7 @@ public class ContatoDAO {
 		
 		for (Contato cont : f.getContatos()) {
 			
-		estrutura = con.prepareStatement("INSERT INTO CONTATO (ID_CONTATO, TELEFONE, EMAIL, FACEBOOK, ID_FORNECEDOR) VALUES (?,?,?,?,?)");
+		estrutura = con.prepareStatement("INSERT INTO CONTATO (ID_CONTATO, TELEFONE, EMAIL, FACEBOOK, ID_FORNECEDOR_FK_C) VALUES (?,?,?,?,?)");
 		estrutura.setInt(1, cont.getId_contato());
 		estrutura.setString(2, cont.getTelefone());
 		estrutura.setString(3, cont.getEmail());
@@ -51,7 +51,7 @@ public class ContatoDAO {
 		
 		List<Contato> lista = new ArrayList<>();
 		estrutura.getConnection().prepareStatement
-		("SELECT ID_CONTATO, TELEFONE, EMAIL, FACEBOOK FROM CONTATO WHERE ID_Fornecedor = ?");
+		("SELECT ID_CONTATO, TELEFONE, EMAIL, FACEBOOK FROM CONTATO WHERE ID_FORNECEDOR_FK_C = ?");
 		estrutura.setInt(1, i);
 		rs = estrutura.executeQuery();
 		
