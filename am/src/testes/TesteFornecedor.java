@@ -17,6 +17,11 @@ public class TesteFornecedor {
 		return Integer.parseInt(JOptionPane.showInputDialog(textint));
 		
 	}
+	
+	static boolean textboo (String textboo) {
+		return Boolean.parseBoolean(JOptionPane.showInputDialog(textboo));
+		
+	}
 
     public static void main(String[] args) {
         FornecedorBO bo = null;
@@ -33,15 +38,26 @@ public class TesteFornecedor {
                     bo = new FornecedorBO();
                     Fornecedor obj = new Fornecedor();
                     obj.setAll(
-                    		texto("Digite o numero do contrato: "),
-                    		texto("Digite a vigencia do contrato:"),
-                    		texto("Digite o nome do gerente do contrato: "));
+                    		textint("Digite o id do Fornecedor: "),
+                    		texto("Digite o numero do contrato:"),
+                    		texto("Digite o nome do gerente do contrato: "),
+                    		textint("Digite o id do contato: "),
+                    		texto("Digite o telefone:"),
+                    		texto("Digite o email:"),
+                    		texto("Digite o facebook:"),
+                    		textint("Digite o id do Endereco: "),
+                    		texto("Digite o rua:"),
+                    		textint("Digite o numero:"),
+                    		texto("Digite a cidade:"),
+                    		textboo("Digite 0, para criar um usuário com status ativo")
+                    		
+                    		);
                     System.out.println(bo.adicionarNovoFornecedor(obj));
 
                 }else if (op=='C'){
                 	//Consultar
                     bo = new FornecedorBO();
-                    Fornecedor forn = bo.consultarPorContrato(texto("Digite o contrato do Fornecedor:"));
+                    Fornecedor forn = bo.consultarPorContrato(i)(texto("Digite o contrato do Fornecedor:"));
                     
                     System.out.println("Numero do contrato: " + forn.getNumeroContrato());
                     System.out.println("Vigencia do contrato: " + forn.getVigenciaContrato());

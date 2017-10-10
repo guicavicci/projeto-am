@@ -20,6 +20,12 @@ public class TesteCliente {
 		return Integer.parseInt(JOptionPane.showInputDialog(textint));
 		
 	}
+	
+	static boolean textboo (String textboo) {
+		return Boolean.parseBoolean(JOptionPane.showInputDialog(textboo));
+
+		
+	}
 
     public static void main(String[] args) {
         ClienteBO bo = null;
@@ -32,37 +38,42 @@ public class TesteCliente {
                                 + "<G> - Gravar Cliente\n "
                                 + "<C> - Consultar\n "
                                 + "<A> - Alterar Cliente\n"
-                                + "<D> - Deletar").toUpperCase().charAt(0);
+                                + "<D> - Desativar").toUpperCase().charAt(0);
                 if (op=='G'){
                 	bo = new ClienteBO();
                     Cliente obj = new Cliente();
                     obj.setAll(	
+                    		textint("Digite o valor do debito: "),
                     		texto("Digite o numero instalacao: "),
-                    		texto("Digite o atualizaca cadastral:"),
-                    		texto("Digite o debito pendente: "));                  		
-                    System.out.println(bo.adicionarCliente(obj));		
+                    		texto("Digite o debito pendente: "));
+                    		textboo("Digite o status: ");
+                    		
+                    
+                    System.out.println(bo.AdicionarNovoCliente(obj));		
 
                 }else if (op=='C'){
                 	//Consultar
                     bo = new ClienteBO();
-                    String numeroInscricao = texto("Digite o numero da inscricao : ");
-					cliente = ClienteBO.consultarCodigo(numeroInscricao);
-					JOptionPane.showMessageDialog(null, "Numero da instalacao : " + cliente.getNumeroInstalacao()
-						+ "\nDebito Pendente : " + cliente.getDebitoPendente()
-						+ "\nAtualizacao Cadastral" + cliente.getAtualizacaoCadastral(), "TA AI", JOptionPane.OK_OPTION);
+                    int numeroInscricao = textint("Digite o id do Cliente : ");
+					cliente = ClienteBO.consultarCliente(numeroInscricao);
+					
 
                 }else if (op=='A'){
-                	cliente.setAll(
-							texto ("Digite o numero da inscricao : "),
-							texto ("Digite a atualizacao cadastral : "),
-							texto ("Digite o debito pendente : "));
+                	bo.modificarDebitoPendente(
+							
+							texto ("Digite a valor do novo debito pendente : "),
+							textint ("Digite o id do Cliente : "));
+                	
 
                 }
                 else if (op == 'D') {
                 	//Deletar
             	
-                 	String d = bo.excluirClienteNumero(texto
-                			("Digite o numero da instalacao que deseja deletar:"));
+                 	String d = bo.desativarCliente(
+                 			
+                 			textboo("Digite 1 para desativar o Cliente:"),
+                 			textint("Digite o id do Cliente que deseja desativar")
+                 			);
                 	System.out.println(d);
                 	
                 }

@@ -76,11 +76,11 @@ public class ClienteDAO {
 		
 	} */
 	
-	public int atualizarDebitoPendente (Cliente cliente) throws Exception{
+	public int atualizarDebitoPendente (String d, int i) throws Exception{
 		PreparedStatement estrutura = con.prepareStatement
 		("UPDATE CLIENTE SET DEBITO_PENDENTE = ? WHERE ID_CLIENTE = ?");
-		estrutura.setString(1, cliente.getDebitoPendente());
-		estrutura.setInt(2, cliente.getId_cliente());
+		estrutura.setString(1, d);
+		estrutura.setInt(2, i);
 		int z = estrutura.executeUpdate();
 		estrutura.close();
 		return z;

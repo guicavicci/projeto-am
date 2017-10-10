@@ -40,10 +40,10 @@ public class ClienteBO {
 		
 	}
 	
-	public static String modificarDebitoPendente (Cliente cli) throws Exception {
+	public static String modificarDebitoPendente (String d, int i) throws Exception {
 		
 		ClienteDAO dao = new ClienteDAO();
-		dao.atualizarDebitoPendente(cli);
+		dao.atualizarDebitoPendente(d, i);
 		dao.fechar();
 		return "Modificado!";
 		
