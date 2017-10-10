@@ -19,12 +19,33 @@ public class ClienteBO {
 	public static Cliente consultarCliente (int id) throws Exception {
 		
 		ClienteDAO dao = new ClienteDAO ();
-		dao.selecionarCliente(id);
+		Cliente cli = dao.selecionarCliente(id);
 		dao.fechar();
 		
-		return dao;
+		return cli;
 		
 		
+		
+		
+	}
+	
+	
+	public static String desativarCliente (boolean s, int i) throws Exception {
+		
+		ClienteDAO dao = new ClienteDAO ();
+		dao.desativarCliente(s, i);
+		dao.fechar();
+		return "Desativado com sucesso";
+		
+		
+	}
+	
+	public static String modificarDebitoPendente (Cliente cli) throws Exception {
+		
+		ClienteDAO dao = new ClienteDAO();
+		dao.atualizarDebitoPendente(cli);
+		dao.fechar();
+		return "Modificado!";
 		
 		
 	}
