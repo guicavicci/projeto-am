@@ -31,16 +31,14 @@ public class EnderecoDAO {
 	public String gravarEndereco(Fornecedor forn) throws Exception{
 		
 		for (Endereco end : forn.getEnderecos()) {
-		
-		
-		estrutura = con.prepareStatement("INSERT INTO ENDERECO (ID_ENDERECO, RUA, NUMERO, CIDADE, ID_FORNECEDOR_FK_E) VALUES (?,?,?,?)");
-		estrutura.setInt(1, end.getId_endereco());
-		estrutura.setString(2, end.getRua());
-		estrutura.setInt(3, end.getNumero());
-		estrutura.setString(4, end.getCidade());
-		estrutura.setInt(5, forn.getId_fornecedor());
-		estrutura.executeUpdate();
-		estrutura.close();
+			estrutura = con.prepareStatement("INSERT INTO ENDERECO (ID_ENDERECO, RUA, NUMERO, CIDADE, ID_FORNECEDOR_FK_E) VALUES (?,?,?,?)");
+			estrutura.setInt(1, end.getId_endereco());
+			estrutura.setString(2, end.getRua());
+			estrutura.setInt(3, end.getNumero());
+			estrutura.setString(4, end.getCidade());
+			estrutura.setInt(5, forn.getId_fornecedor());
+			estrutura.executeUpdate();
+			estrutura.close();
 		}
 					
 		return "Inserido com sucesso!";

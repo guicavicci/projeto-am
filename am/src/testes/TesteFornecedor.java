@@ -22,7 +22,8 @@ public class TesteFornecedor {
 	}
 	
 	static boolean textboo (String textboo) {
-		return Boolean.parseBoolean(JOptionPane.showInputDialog(textboo));
+		textboo = JOptionPane.showInputDialog(textboo);
+		return textboo.equalsIgnoreCase("sim") ?  true : false;
 		
 	}
 
@@ -47,11 +48,11 @@ public class TesteFornecedor {
                     fornecedor.setGerenteContrato(
                     		texto("Digite o nome do gerente do contrato: "));
                     fornecedor.setStatus(		
-                    		textboo("Digite 0, para criar um usuário com status ativo"));
+                    		textboo("Deseja criar um usuário com status ativo? (0 ou 1)"));
                     		                    		
                     //Contato
                     
-                    boolean newContato = textboo ("Digite [1] para cadastrar um novo contato, e [0] para sair");
+                    boolean newContato = textboo ("Digite [sim] para cadastrar um novo contato, e [não] para sair");
                     
                     if(newContato) {
                     	fornecedor.setContatos(new ArrayList<Contato>()); 	
@@ -74,7 +75,7 @@ public class TesteFornecedor {
                 		texto("Digite o facebook:"));
                     	
                     	fornecedor.getContatos().add(contato);
-                    	newContato = textboo ("Digite [1] para cadastrar um novo contato, e [0] para sair");
+                    	newContato = textboo ("Digite [sim] para cadastrar um novo contato, e [não] para sair");
                     	
                     }
                     
@@ -84,7 +85,7 @@ public class TesteFornecedor {
                     
                 
                 //Endereco
-                	boolean newEndereco = textboo("Digite [1] para cadastrar um novo endereco, e [0] para sair");
+                	boolean newEndereco = textboo("Digite [sim] para cadastrar um novo endereco, e [não] para sair");
                     
                     if(newEndereco) {
                     	fornecedor.setEnderecos(new ArrayList<Endereco>());
@@ -104,7 +105,7 @@ public class TesteFornecedor {
                   		texto("Digite a cidade:"));
                     	
                   		fornecedor.getEnderecos().add(endereco);
-                  		newEndereco = textboo("Digite [1] para cadastrar um novo endereco, e [0] para sair");
+                  		newEndereco = textboo("Digite [sim] para cadastrar um novo endereco, e [não] para sair");
                     }
                     
                     

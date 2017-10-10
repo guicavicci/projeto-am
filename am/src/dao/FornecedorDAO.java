@@ -29,7 +29,7 @@ public class FornecedorDAO {
             estrutura.setInt(1, forn.getId_fornecedor());
             estrutura.setString(2, forn.getNumeroContrato());
             estrutura.setString(3, forn.getGerenteContrato());
-            estrutura.setBoolean(3, forn.isStatus());
+            estrutura.setBoolean(4, forn.isStatus());
             estrutura.execute();
             estrutura.close();
             
