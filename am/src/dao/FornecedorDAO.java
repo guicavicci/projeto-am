@@ -60,11 +60,11 @@ public class FornecedorDAO {
                 
                 //Contato
                 ContatoDAO dao = new ContatoDAO ();
-                forn.setContato(dao.getContatoPorFornecedor(resultado.getInt("ID_FORNECEDOR")));
+                forn.setContatos(dao.getContatoPorFornecedor(resultado.getInt("ID_FORNECEDOR")));
                 
                 //Endereco
                 EnderecoDAO end = new EnderecoDAO ();
-                forn.setEndereco(end.getEnderecoPorFornecedor(resultado.getInt("ID_FORNECEDOR")));
+                forn.setEnderecos(end.getEnderecoPorFornecedor(resultado.getInt("ID_FORNECEDOR")));
                 
             }
             resultado.close();

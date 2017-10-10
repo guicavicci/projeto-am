@@ -1,10 +1,13 @@
 package testes;
 
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 
+import beans.Contato;
+import beans.Endereco;
 import beans.Fornecedor;
 import bo.FornecedorBO;
-import dao.FornecedorDAO;
 
 public class TesteFornecedor {
 	
@@ -36,24 +39,80 @@ public class TesteFornecedor {
                                 + "<D> - Deletar").toUpperCase().charAt(0);
                 if (op=='G'){
                     bo = new FornecedorBO();
-                    Fornecedor obj = new Fornecedor();
-                    obj.setAll(
-                    		textint("Digite o id do Fornecedor: "),
-                    		texto("Digite o numero do contrato:"),
-                    		texto("Digite o nome do gerente do contrato: "),
-                    		textint("Digite o id do contato: "),
-                    		texto("Digite o telefone:"),
-                    		texto("Digite o email:"),
-                    		texto("Digite o facebook:"),
-                    		textint("Digite o id do Endereco: "),
-                    		texto("Digite o rua:"),
-                    		textint("Digite o numero:"),
-                    		texto("Digite a cidade:"),
-                    		textboo("Digite 0, para criar um usuário com status ativo")
-                    		
-                    		);
-                    System.out.println(bo.adicionarNovoFornecedor(obj));
-
+                    Fornecedor fornecedor = new Fornecedor();
+                    fornecedor.setId_fornecedor(
+                    		textint("Digite o id do Fornecedor: "));
+                    fornecedor.setNumeroContrato(
+                       		texto("Digite o numero do contrato:"));
+                    fornecedor.setGerenteContrato(
+                    		texto("Digite o nome do gerente do contrato: "));
+                    fornecedor.setStatus(		
+                    		textboo("Digite 0, para criar um usuário com status ativo"));
+                    		                    		
+                    //Contato
+                    
+                    boolean newContato = textboo ("Digite [1] para cadastrar um novo contato, e [0] para sair");
+                    
+                    if(newContato) {
+                    	fornecedor.setContatos(new ArrayList<Contato>()); 	
+                    	
+                    }
+                    
+                    while(newContato) {
+                    	Contato contato = new Contato();
+                    	
+                    	contato.setId_contato(
+                    	textint("Digite o id do contato: "));
+                    	
+                    	contato.setTelefone(
+                		texto("Digite o telefone:"));
+                    	
+                    	contato.setEmail(
+                		texto("Digite o email:"));
+                    	
+                    	contato.setFacebook(
+                		texto("Digite o facebook:"));
+                    	
+                    	fornecedor.getContatos().add(contato);
+                    	newContato = textboo ("Digite [1] para cadastrar um novo contato, e [0] para sair");
+                    	
+                    }
+                    
+                    	
+           		
+                
+                    
+                
+                //Endereco
+                	boolean newEndereco = textboo("Digite [1] para cadastrar um novo endereco, e [0] para sair");
+                    
+                    if(newEndereco) {
+                    	fornecedor.setEnderecos(new ArrayList<Endereco>());
+                    }
+                    
+                    while(newEndereco) {
+                    	Endereco endereco = new Endereco();
+                    	endereco.setId_endereco(textint("Digite o id do Endereco: "));
+                    	
+                    	endereco.setRua(
+                  		texto("Digite o rua:"));
+                    	
+                    	endereco.setNumero(
+                  		textint("Digite o numero:"));
+                    	
+                    	endereco.setCidade(
+                  		texto("Digite a cidade:"));
+                    	
+                  		fornecedor.getEnderecos().add(endereco);
+                  		newEndereco = textboo("Digite [1] para cadastrar um novo endereco, e [0] para sair");
+                    }
+                    
+                    
+                    
+                    
+            		System.out.println(bo.adicionarNovoFornecedor(fornecedor));    
+    
+                    
                 }else if (op=='C'){
                 	//Consultar
                     bo = new FornecedorBO();

@@ -7,12 +7,12 @@ public class Fornecedor {
 	private int id_fornecedor;
 	private String numeroContrato;
 	private String gerenteContrato;
-	private List<Contato> contato;
-	private List<Endereco> endereco;
+	private List<Contato> contatos;
+	private List<Endereco> enderecos;
 	private boolean status;
 	
 	public String getAll() {
-		return id_fornecedor + "\n" + numeroContrato + "\n" + gerenteContrato + "\n" + contato + "\n" + endereco + "\n" + status;
+		return id_fornecedor + "\n" + numeroContrato + "\n" + gerenteContrato + "\n" + contatos + "\n" + enderecos + "\n" + status;
 		
 	}
 	
@@ -20,7 +20,8 @@ public class Fornecedor {
 		id_fornecedor = id;
 		numeroContrato = nc;
 		gerenteContrato = gc;
-		contato = c;
+		contatos = c;
+		enderecos = e;
 		status = s;
 	
 	}
@@ -37,8 +38,8 @@ public class Fornecedor {
 		this.id_fornecedor = id_fornecedor;
 		this.numeroContrato = numeroContrato;
 		this.gerenteContrato = gerenteContrato;
-		this.contato = contato;
-		this.endereco = endereco;
+		this.contatos = contatos;
+		this.enderecos = enderecos;
 		this.status = status;
 	}
 
@@ -66,20 +67,20 @@ public class Fornecedor {
 		this.gerenteContrato = gerenteContrato;
 	}
 
-	public List<Contato> getContato() {
-		return contato;
+	public List<Contato> getContatos() {
+		return contatos;
 	}
 
-	public void setContato(List<Contato> contato) {
-		this.contato = contato;
+	public void setContatos(List<Contato> contatos) {
+		this.contatos = contatos;
 	}
 
-	public List<Endereco> getEndereco() {
-		return endereco;
+	public List<Endereco> getEnderecos() {
+		return enderecos;
 	}
 
-	public void setEndereco(List<Endereco> endereco) {
-		this.endereco = endereco;
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
 	}
 
 	public boolean isStatus() {

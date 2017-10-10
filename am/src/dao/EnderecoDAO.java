@@ -30,7 +30,7 @@ public class EnderecoDAO {
 
 	public String gravarEndereco(Fornecedor forn) throws Exception{
 		
-		for (Endereco end : forn.getEndereco()) {
+		for (Endereco end : forn.getEnderecos()) {
 		
 		
 		estrutura = con.prepareStatement("INSERT INTO ENDERECO (ID_ENDERECO, RUA, NUMERO, CIDADE, ID_FORNECEDOR_FK_E) VALUES (?,?,?,?)");
