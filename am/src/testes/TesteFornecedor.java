@@ -57,28 +57,28 @@ public class TesteFornecedor {
                 }else if (op=='C'){
                 	//Consultar
                     bo = new FornecedorBO();
-                    Fornecedor forn = bo.consultarPorContrato(i)(texto("Digite o contrato do Fornecedor:"));
+                    Fornecedor forn = bo.consultarPorIds(textint("Digite o contrato do Fornecedor:"));
                     
                     System.out.println("Numero do contrato: " + forn.getNumeroContrato());
-                    System.out.println("Vigencia do contrato: " + forn.getVigenciaContrato());
                     System.out.println("Gerente: " + forn.getGerenteContrato());
 
                 }else if (op=='A'){
                     bo = new FornecedorBO();
                     String p = bo.mudarGerente(
                     		texto("Digite o nome do novo gerente:"),
-                    		texto ("Digite o numero do contrato que irá ter o gerente alterado:"));
+                    		textint ("Digite o id que irá ter o gerente alterado:"));
                     		              		
                     System.out.println(p);
 
 
                 }
                 else if (op == 'D') {
-                	//Deletar
              	
                 	bo = new FornecedorBO();
-                	String d = bo.deletarFornecedor(texto
-                			("Digite o numero de contrato do fornecedor que deseja deletar:"));
+                	String d = bo.desativarFornecedor(
+                			textboo("Digite [1] para desativar o Fornecedor: "),
+                			textint("Digite o id do Fornecedor que será desativado: ")
+                			);
                 	System.out.println(d);
                 	
                 }

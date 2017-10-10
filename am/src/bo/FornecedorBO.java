@@ -15,7 +15,7 @@ public class FornecedorBO {
         return "Fornecedor Adicionado!";
     }
 
-    public static Fornecedor consultarPorContrato(int i) throws Exception{
+    public static Fornecedor consultarPorIds(int i) throws Exception{
        
     	FornecedorDAO dao = new FornecedorDAO();
     	Fornecedor f = dao.getFornecedor(i);
@@ -33,7 +33,7 @@ public class FornecedorBO {
         return "Gerente alterado!";
     }
           
-    public static String deletarFornecedor (boolean s, int i) throws Exception {
+    public static String desativarFornecedor (boolean s, int i) throws Exception {
     	
     	FornecedorDAO dao = new FornecedorDAO();
     	dao.DesativarFornecedor(s, i);
