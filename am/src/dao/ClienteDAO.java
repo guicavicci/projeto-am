@@ -30,6 +30,12 @@ public class ClienteDAO {
 		estrutura.setString(3, cliente.getDebitoPendente());
 		estrutura.execute();
 		estrutura.close();
+		
+		//Fatura
+		
+		FaturaDAO dao = new FaturaDAO();
+		dao.criar(cliente);
+		dao.fechar();
 		return "Gravado com sucesso";
 	}
 	
@@ -43,8 +49,15 @@ public class ClienteDAO {
 			cliente.setId_cliente(rs.getInt("ID_CLIENTE"));
 			cliente.setNumeroInstalacao(rs.getString("numero_instalacao"));
 			cliente.setDebitoPendente(rs.getString("debito_pentende"));
-			
+		
+		//Fatura
+		
+		FaturaDAO dao = new FaturaDAO();
+		cliente.setFatura(dao.consultarPorCliente(rs.getInt("ID_CLIENTE")));
+		dao.fechar();
+
 		}
+		
 		rs.close();
 		estrutura.close();
 		return cliente;
@@ -70,7 +83,16 @@ public class ClienteDAO {
 		estrutura.setInt(2, cliente.getId_cliente());
 		int z = estrutura.executeUpdate();
 		estrutura.close();
-		System.out.println(z);
+		return z;
+	}
+	
+	public int desativarCliente(boolean s, int i) throws Exception{
+		PreparedStatement estrutura = con.prepareStatement
+		("UPDATE CLIENTE SET STATUS = ? WHERE ID_CLIENTE = ?");
+		estrutura.setBoolean(1, s);
+		estrutura.setInt(2, i);
+		int z = estrutura.executeUpdate();
+		estrutura.close();
 		return z;
 	}
 	

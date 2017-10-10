@@ -51,7 +51,7 @@ public class ContatoDAO {
 		
 		List<Contato> lista = new ArrayList<>();
 		estrutura.getConnection().prepareStatement
-		("SELECT ID_CONTATO, TELEFONE, EMAIL, FACEBOOK FROM CONTATO WHERE ID_Forncedor = ?");
+		("SELECT ID_CONTATO, TELEFONE, EMAIL, FACEBOOK FROM CONTATO WHERE ID_Fornecedor = ?");
 		estrutura.setInt(1, i);
 		rs = estrutura.executeQuery();
 		

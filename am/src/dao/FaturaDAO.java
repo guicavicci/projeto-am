@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import beans.Cliente;
 import beans.Fatura;
 import conexao.ConexaoFactory;
 
@@ -29,22 +30,27 @@ public class FaturaDAO
         return "Conexão fechada com sucesso!";
     }
     //Criar fatura
-    public String criar(Fatura fatura)throws Exception
+    public String criar(Cliente cli)throws Exception
     {
+    	for (Fatura fatura : cli.getFatura()) {
+			
+		
          estrutura = con.prepareStatement
         ("INSERT INTO FATURA (ID_FATURA, NUMERO_FATURA, CONSUMO_KWH, VALOR, ID_CLIENTE) VALUES (?,?,?,?)");
         estrutura.setInt(1, fatura.getId_fatura());
         estrutura.setString(2, fatura.getNumeroFatura());
         estrutura.setString(3, fatura.getConsumoKwh());
         estrutura.setDouble(4, fatura.getValor());
-        int nm = estrutura.executeUpdate();
+        estrutura.setInt(5, cli.getId_cliente());
+        estrutura.executeUpdate();
         estrutura.close();
+    	}
         
         
-        return nm + " linha foi criada!";
-    }
+        return "Criado com sucesso!";
+    } 
     //Pegar fatura
-    public List<Fatura> consultarPorCLiente(int i) throws Exception
+    public List<Fatura> consultarPorCliente(int i) throws Exception
     {
     	List<Fatura> lista = new ArrayList <>();
         estrutura = con.prepareStatement
@@ -75,7 +81,7 @@ public class FaturaDAO
     public int delete(int i)throws Exception
     {
         PreparedStatement estrutura = con.prepareStatement
-        ("DELETE FROM FATURA WHERE ID_FATURA = ?");
+        ("DELETE FROM FATURA WHERE ID_CLIENTE_FK_F = ?");
         estrutura.setLong(1, i);
         int x = estrutura.executeUpdate();
         estrutura.close();
