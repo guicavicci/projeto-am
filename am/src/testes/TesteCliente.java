@@ -1,13 +1,12 @@
 package testes;
 
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 
 import beans.Cliente;
-import beans.Endereco;
+import beans.Fatura;
 import bo.ClienteBO;
-import bo.EnderecoBO;
-import bo.ClienteBO;
-import dao.ClienteDAO;
 
 public class TesteCliente {
 	
@@ -22,8 +21,8 @@ public class TesteCliente {
 	}
 	
 	static boolean textboo (String textboo) {
-		return Boolean.parseBoolean(JOptionPane.showInputDialog(textboo));
-
+		textboo = JOptionPane.showInputDialog(textboo);
+		return textboo.equalsIgnoreCase("sim") ?  true : false;
 		
 	}
 
@@ -41,24 +40,64 @@ public class TesteCliente {
                                 + "<D> - Desativar").toUpperCase().charAt(0);
                 if (op=='G'){
                 	bo = new ClienteBO();
-                    Cliente obj = new Cliente();
-                    obj.setAll(	
-                    		textint("Digite o valor do debito: "),
-                    		texto("Digite o numero instalacao: "),
-                    		texto("Digite o debito pendente: "));
-                    		textboo("Digite o status: ");
+                    cliente.setId_cliente(	
+                    		textint("Digite o valor do debito: "));
+                    
+                    cliente.setNumeroInstalacao(               
+                    		texto("Digite o numero instalacao: "));
+                    		
+                    cliente.setDebitoPendente(
+                    texto("Digite o debito pendente: "));
+                    		
+                    cliente.setStatus(
+                    		textboo("Digite o status: "));
+                    
+                    boolean newFatura = textboo ("Digite [sim] para inserir uma fatura, ou [nao] para sair.");
+                    
+                    if (newFatura) {
+                    	
+                    	cliente.setFatura(new ArrayList<>());
+                    }
+                    
+                    while (newFatura) {
+                    
+                    	Fatura fat = new Fatura();
+                    	System.out.println("Digite o id da fatura" + fat.getId_fatura());
+                    	System.out.println("Numero da fatura: " + fat.getNumeroFatura());
+                    	System.out.println("Consumo: " + fat.getConsumoKwh());
+                    	System.out.println("Valor da fatura: " + fat.getValor());
+                    	
+                    	cliente.getFatura().add(fat);
+             
                     		
                     
-                    System.out.println(bo.AdicionarNovoCliente(obj));		
-
+                    System.out.println(bo.AdicionarNovoCliente(cliente));		
+                    }
                 }else if (op=='C'){
                 	//Consultar
                     bo = new ClienteBO();
-                    int numeroInscricao = textint("Digite o id do Cliente : ");
-					cliente = ClienteBO.consultarCliente(numeroInscricao);
+                    int i = textint("Digite o id do Cliente : ");
+					cliente = ClienteBO.consultarCliente(i);
+					
+					System.out.println("Numero instalacao: " + cliente.getNumeroInstalacao());
+					System.out.println("Debito pendente: " + cliente.getDebitoPendente());
 					
 
-                }else if (op=='A'){
+					
+			       	Fatura fat = new Fatura();
+			       	for (Fatura f : cliente.getFatura()) {
+			       		
+			       		System.out.println("Id da fatura: " + f.getId_fatura());
+			       		System.out.println("Numero da fatura: " + f.getNumeroFatura());
+			       		System.out.println("Consumo KWH: " + f.getConsumoKwh());
+			       		System.out.println("Valor: " + f.getValor());
+			       		
+						
+					}
+                	
+                
+                }
+                else if (op=='A'){
                 	bo.modificarDebitoPendente(
 							
 							texto ("Digite a valor do novo debito pendente : "),
@@ -67,9 +106,8 @@ public class TesteCliente {
 
                 }
                 else if (op == 'D') {
-                	//Deletar
-            	
-                 	String d = bo.desativarCliente(
+                
+                	String d = bo.desativarCliente(
                  			
                  			textboo("Digite 1 para desativar o Cliente:"),
                  			textint("Digite o id do Cliente que deseja desativar")

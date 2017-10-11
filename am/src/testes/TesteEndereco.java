@@ -33,11 +33,11 @@ public class TesteEndereco {
                     bo = new EnderecoBO();
                     Endereco obj = new Endereco();
                     obj.setAll(	
-                    		texto("Digite o cep: "),
+                    		textint("Digite o id: "),
                     		texto("Digite o rua:"),
                     		textint("Digite o numero: "),
                     		texto("Digite o cidade: "));                  		
-                    System.out.println(bo.cadastrarEndereco(obj));
+                    System.out.println(bo.(obj));
 
                 }else if (op=='C'){
                 	//Consultar

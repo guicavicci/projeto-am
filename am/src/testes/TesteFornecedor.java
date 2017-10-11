@@ -129,6 +129,8 @@ public class TesteFornecedor {
                     for (Contato c : forn.getContatos()) {
                     System.out.println("Id do contato: " + c.getId_contato());
                     System.out.println("Telefone: " + c.getTelefone());
+                    System.out.println("Email: " + c.getEmail());
+                    System.out.println("Facebook: " + c.getFacebook());
                     }
                 }else if (op=='A'){
                     bo = new FornecedorBO();
