@@ -30,13 +30,13 @@ public class FaturaDAO
         return "Conexão fechada com sucesso!";
     }
     //Criar fatura
-    public String criar(Cliente cli)throws Exception
+    public String adicionarFatura(Cliente cli)throws Exception
     {
     	for (Fatura fatura : cli.getFatura()) {
 			
 		
          estrutura = con.prepareStatement
-        ("INSERT INTO FATURA (ID_FATURA, NUMERO_FATURA, CONSUMO_KWH, VALOR, ID_CLIENTE) VALUES (?,?,?,?)");
+        ("INSERT INTO FATURA (ID_FATURA, NUMERO_FATURA, CONSUMO_KWH, VALOR, ID_CLIENTE_FK_F) VALUES (?,?,?,?)");
         estrutura.setInt(1, fatura.getId_fatura());
         estrutura.setString(2, fatura.getNumeroFatura());
         estrutura.setString(3, fatura.getConsumoKwh());
@@ -54,7 +54,7 @@ public class FaturaDAO
     {
     	List<Fatura> lista = new ArrayList <>();
         estrutura = con.prepareStatement
-        ("SELECT id_fatura, NUMERO_FATURA, CONSUMO_KWH,  FROM FATURA, VALOR WHERE ID_CLIENTE = ?");
+        ("SELECT id_fatura, NUMERO_FATURA, CONSUMO_KWH,  FROM FATURA, VALOR WHERE ID_CLIENTE_FK_F = ?");
         estrutura.setInt(1, i);
         resultado = estrutura.executeQuery();
         while(resultado.next())

@@ -31,11 +31,18 @@ public class TesteEndereco {
                                 + "<D> - Deletar").toUpperCase().charAt(0);
                 if (op=='G'){
                     bo = new EnderecoBO();
-                    Endereco obj = new Endereco();
-                    obj.setAll(	
-                    		textint("Digite o id: "),
-                    		texto("Digite o rua:"),
-                    		textint("Digite o numero: "),
+                    Endereco end = new Endereco();
+                    
+                    end.setId_endereco(	
+                    		textint("Digite o id: "));
+                    
+                    end.setRua(                    
+                    		texto("Digite o rua:"));
+                    
+                    end.setNumero(
+                    		textint("Digite o numero: "));
+                    
+                    end.setCidade(
                     		texto("Digite o cidade: "));                  		
                     System.out.println(bo.(obj));
 

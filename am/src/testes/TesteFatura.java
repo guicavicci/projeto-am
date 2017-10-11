@@ -2,53 +2,86 @@ package testes;
 
 import javax.swing.JOptionPane;
 
+import beans.Cliente;
 import beans.Fatura;
 import bo.FaturaBO;
-import dao.FaturaDAO;
 
 public class TesteFatura
 {
+	
+	static String texto (String texto) {
+		return JOptionPane.showInputDialog(texto);
+		
+	}
+	
+	static int textint (String textint) {
+		return Integer.parseInt(JOptionPane.showInputDialog(textint));
+		
+	}
+	
+	static double textdoub (String textdoub) {
+		return Integer.parseInt(JOptionPane.showInputDialog(textdoub));
+		
+	}
+	
+	static boolean textboo (String textboo) {
+		textboo = JOptionPane.showInputDialog(textboo);
+		return textboo.equalsIgnoreCase("sim") ?  true : false;
+		
+	}
     public static void main(String[] args)
     {
-        FaturaDAO dao = null;
+        FaturaBO bo = null;
+        Fatura fat = new Fatura();
+        Cliente cli = new Cliente();
         try
         {
-            dao = new FaturaDAO();
+            bo = new FaturaBO();
             do
             {
                 char op =JOptionPane.showInputDialog
                      ("Escolha uma opção:\n "
                          + "<G> - Gravar fatura\n "
-                         + "<R> - Remover fatura\n "
                          + "<A> - Atualizar taxa de fatura\n "
                          + "<P> - Pesquisar fatura").toUpperCase().charAt(0);
                 
                 if (op=='G')
                 {
                     //o valor é a taxa vezes o consumo
-                    FaturaBO.adicionarNovaFatura
-                    (new Fatura
-                        (
-                        Long.parseLong(JOptionPane.showInputDialog("Insira o numero da fautra")),
-                        Double.parseDouble(JOptionPane.showInputDialog("Insira o consumo em Kw/h")),
-                        JOptionPane.showInputDialog("Insira a data de vencimento (dd/mm/yyyy)"),
-                        JOptionPane.showInputDialog("Insira o tipo de pagamento"),
-                        Double.parseDouble(JOptionPane.showInputDialog("Insira a taxa por kw/h"))
-                        )
-                    );
+                    bo = new FaturaBO();
+                	fat.setId_fatura(
+                	textint ("Insira o id da fatura: "));	
+                    
+                    fat.setNumeroFatura
+                    (texto ("Insira o numero da fatura: "));
+                    
+                    fat.setConsumoKwh
+                    (texto ("Insira o consumo em KWH: "));
+                    
+                    fat.setValor
+                    (textdoub("Insira o valor: "));
+                    
+                    cli.setId_cliente
+                    (textint("Digite o ID do cliente, responsável por essa fatura: "));
+          		              
+                   	System.out.println(bo.adicionarNovaFatura(cli));
+                    
+            
                 }
+                
+                
                 else if (op=='P')
                 {
-                    FaturaBO.pegarFatura(Long.parseLong(JOptionPane.showInputDialog("Insira o numero da fatura a ser pesquisada")));
-                }
-                else if (op=='R')
-                {
-                    FaturaBO.deletarFatura(Long.parseLong(JOptionPane.showInputDialog("Insira o numero da fatura a ser deletada")));
+                    
+                	bo.mostrarFatura(textint("Digite o id da Fatura que deseja selecionar: "));
                 }
                 else if (op=='A')
                 {
-                    FaturaBO.atualizarTaxa(Double.parseDouble(JOptionPane.showInputDialog("Insira a taxa")),
-                            Long.parseLong("Insira o numero de fatura que a taxa vai ser atualizada"));
+                	
+                	bo.acrescimoJuros(
+                			textdoub("Insira o valor que será acrescentado de juros %: "),
+                			textint("Digite o id da Fatura que sofrerá o acescimo: "));
+
                 }
                 else
                 {
@@ -64,17 +97,7 @@ public class TesteFatura
         {
             e.printStackTrace();
         }
-        finally
-        {
-            try
-            {
-                dao.fechar();
-            }
-            catch(Exception e)
-            {
-                e.printStackTrace();
-            }
-        }
+        
     }
 }
 

@@ -82,14 +82,14 @@ public class EnderecoDAO {
 	}
 	
 
-    /*
+    
 	public int delete(int i) throws Exception {
         PreparedStatement estrutura = con.prepareStatement ("DELETE FROM ENDERECO WHERE ID_ENDERECO = ?");
         estrutura.setInt(1, i);
         int z = estrutura.executeUpdate();
         estrutura.close();
         return z;
-    }*/
+    }
     
 
     

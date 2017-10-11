@@ -78,7 +78,7 @@ public class ContatoDAO {
 	public String mudarTelefonePorFornecedor (String tel, int i) throws Exception {
 		
 		
-		estrutura.getConnection().prepareStatement("UPDATE CONTATO SET TELEFONE = ? WHERE ID_FORNECEDOR = ?");
+		estrutura.getConnection().prepareStatement("UPDATE CONTATO SET TELEFONE = ? WHERE ID_FORNECEDOR_FK_C = ?");
 		estrutura.setString(1, tel);
 		estrutura.setInt(2, i);
 		int x = estrutura.executeUpdate();
@@ -87,7 +87,9 @@ public class ContatoDAO {
 		
 	}
 	
-	/*
+
+	
+	
 	
 	public String deletarContato (int i) throws Exception {
 		estrutura.getConnection().prepareStatement("DELETE FROM CONTATO WHERE ID = ?");
@@ -100,6 +102,6 @@ public class ContatoDAO {
 		return x + " Linhas excluidas";
 		
 		
-	} */
+	} 
 	
 }

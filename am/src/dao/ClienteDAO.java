@@ -34,7 +34,7 @@ public class ClienteDAO {
 		//Fatura
 		
 		FaturaDAO dao = new FaturaDAO();
-		dao.criar(cliente);
+		dao.adicionarFatura(cliente);
 		dao.fechar();
 		return "Gravado com sucesso";
 	}
