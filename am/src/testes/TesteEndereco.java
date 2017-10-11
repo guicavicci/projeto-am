@@ -3,8 +3,8 @@ package testes;
 import javax.swing.JOptionPane;
 
 import beans.Endereco;
+import beans.Fornecedor;
 import bo.EnderecoBO;
-import dao.EnderecoDAO;
 
 public class TesteEndereco {
 	
@@ -32,6 +32,7 @@ public class TesteEndereco {
                 if (op=='G'){
                     bo = new EnderecoBO();
                     Endereco end = new Endereco();
+                    Fornecedor forn = new Fornecedor();
                     
                     end.setId_endereco(	
                     		textint("Digite o id: "));
@@ -43,22 +44,25 @@ public class TesteEndereco {
                     		textint("Digite o numero: "));
                     
                     end.setCidade(
-                    		texto("Digite o cidade: "));                  		
-                    System.out.println(bo.(obj));
+                    		texto("Digite o cidade: "));
+                    
+                    forn.setId_fornecedor(
+                    		textint("Digite o ID do fornecedor que será atribuido esse contato: "));
+                    
+                    System.out.println(bo.adicionarNovoEndereco(forn));
 
                 }else if (op=='C'){
                 	//Consultar
                     bo = new EnderecoBO();
-                    Endereco end = bo.consultarPorCep(texto("Digite o cep do Endereco:"));
+                    Endereco end = bo.retornaEndereco(textint("Digite o cep do Endereco:"));
                     
-                    System.out.println("CEP: " + end.getCep());
                     System.out.println("Rua: " + end.getRua());
                     System.out.println("Numero: " + end.getNumero());
                     System.out.println("Cidade: " + end.getCidade());
 
                 }else if (op=='A'){
                     bo = new EnderecoBO();
-                    String end = bo.mudarCidade(
+                    String end = bo.alterarEndereco(
                     		texto("Digite a nova cidade: "),
                     		texto ("Digite o cep que terá a cidade alterada: "));
                     		              		
@@ -70,11 +74,10 @@ public class TesteEndereco {
                 	//Deletar
              	
                 	bo = new EnderecoBO();
-                	String d = bo.deletarCidade(texto
-                			("Digite o cep que deseja excluir: "));
-                	System.out.println(d);
-                	
+                	bo.deletarEndereco(
+                			textint("Digite o id do Endereco que será excluido! "));           	
                 }
+                
                 else{
                     System.out.println("Opção inválida!!!");
                 }

@@ -35,11 +35,10 @@ public class EnderecoBO {
 		return "Endereco alterado!";
 	}
 	
-	public static String deletarEndereco (Endereco end) throws Exception {
+	public static String deletarEndereco (int i) throws Exception {
 		EnderecoDAO dao = new EnderecoDAO();
-		dao.mudarEndereco(end);
+		dao.delete(i);
 		dao.fechar();
-		
 		
 		return "Endereco deletado!";
 	}
