@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import beans.Contato;
 import beans.Endereco;
 import beans.Fornecedor;
+import bo.ContatoBO;
 import bo.FornecedorBO;
 
 public class TesteFornecedor {
@@ -48,11 +49,11 @@ public class TesteFornecedor {
                     fornecedor.setGerenteContrato(
                     		texto("Digite o nome do gerente do contrato: "));
                     fornecedor.setStatus(		
-                    		textboo("Deseja criar um usuário com status ativo? (0 ou 1)"));
+                    		textboo("Deseja criar um usuario com status ativo? (0 ou 1)"));
                     		                    		
                     //Contato
                     
-                    boolean newContato = textboo ("Digite [sim] para cadastrar um novo contato, e [não] para sair");
+                    boolean newContato = textboo ("Digite [sim] para cadastrar um novo contato, e [nao] para sair");
                     
                     if(newContato) {
                     	fornecedor.setContatos(new ArrayList<Contato>()); 	
@@ -118,11 +119,17 @@ public class TesteFornecedor {
                 }else if (op=='C'){
                 	//Consultar
                     bo = new FornecedorBO();
-                    Fornecedor forn = bo.consultarPorIds(textint("Digite o contrato do Fornecedor:"));
+                    Fornecedor forn = bo.consultarPorIds(textint("Digite o id do Fornecedor:"));
                     
                     System.out.println("Numero do contrato: " + forn.getNumeroContrato());
                     System.out.println("Gerente: " + forn.getGerenteContrato());
-
+                   
+                    boolean listaContato = textboo("Digite [sim] para listar os contatos, e [nao] para sair");
+                    Contato cont = new Contato();
+                    for (Contato c : forn.getContatos()) {
+                    System.out.println("Id do contato: " + c.getId_contato());
+                    System.out.println("Telefone: " + c.getTelefone());
+                    }
                 }else if (op=='A'){
                     bo = new FornecedorBO();
                     String p = bo.mudarGerente(
