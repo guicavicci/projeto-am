@@ -70,12 +70,13 @@ public class EnderecoDAO {
 		return lista;
 	}
 	
-	public String mudarEndereco (Endereco end) throws Exception {
+	public String mudarEndereco (String r, int n, String c, int i) throws Exception {
 		estrutura.getConnection().prepareStatement
-		("UPDATE ENDERECO SET RUA = ?, NUMERO = ?, CIDADE = ? WHERE ID_FORNECEDOR");
-		estrutura.setString(1, end.getRua());
-		estrutura.setInt(2, end.getNumero());
-		estrutura.setString(3, end.getCidade());
+		("UPDATE ENDERECO SET RUA = ?, NUMERO = ?, CIDADE = ? WHERE ID_FORNECEDOR_FK_E = ?");
+		estrutura.setString(1, r);
+		estrutura.setInt(2, n);
+		estrutura.setString(3, c);
+		estrutura.setInt(4, i);
 		estrutura.executeUpdate();
 		estrutura.close();
 		return "Atualizado com sucesso";

@@ -63,8 +63,10 @@ public class TesteEndereco {
                 }else if (op=='A'){
                     bo = new EnderecoBO();
                     String end = bo.alterarEndereco(
-                    		texto("Digite a nova cidade: "),
-                    		texto ("Digite o cep que terá a cidade alterada: "));
+                    		texto("Digite a nova rua: "),
+                    		textint("Digite o novo numero: "),
+                    		texto ("Digite a nova cidade: "),
+                    		textint("Digite o id que será: "));
                     		              		
                     System.out.println(end + "campo email atualizado");
 

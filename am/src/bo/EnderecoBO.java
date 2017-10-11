@@ -26,10 +26,10 @@ public class EnderecoBO {
 		
 	}
 	
-	public static String alterarEndereco (Endereco end) throws Exception {
+	public static String alterarEndereco (String r,int n, String c, int i) throws Exception {
 		
 		EnderecoDAO dao = new EnderecoDAO();
-		dao.mudarEndereco(end);
+		dao.mudarEndereco(r, n, c, i);
 		dao.fechar();
 		
 		return "Endereco alterado!";
