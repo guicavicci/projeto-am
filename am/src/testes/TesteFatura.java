@@ -51,9 +51,7 @@ public class TesteFatura
                 {
                 	
                    boolean newFatura = textboo ("Digite [sim] para inserir uma fatura, ou [nao] para sair.");
-                   
-                   while (newFatura){
-                	   
+           	   
             	   
                        bo = new FaturaBO();
                    	
@@ -87,10 +85,6 @@ public class TesteFatura
                 	   
                    }
                    
-                   
-          
-            
-                }
                 
                 
                 else if (op=='P')

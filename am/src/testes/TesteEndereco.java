@@ -1,9 +1,10 @@
 package testes;
 
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 
 import beans.Endereco;
-import beans.Fatura;
 import beans.Fornecedor;
 import bo.EnderecoBO;
 
@@ -16,6 +17,12 @@ public class TesteEndereco {
 	
 	static int textint (String textint) {
 		return Integer.parseInt(JOptionPane.showInputDialog(textint));
+		
+	}
+	
+	static boolean textboo (String textboo) {
+		textboo = JOptionPane.showInputDialog(textboo);
+		return textboo.equalsIgnoreCase("sim") ?  true : false;
 		
 	}
 
@@ -35,11 +42,24 @@ public class TesteEndereco {
                     Endereco end = new Endereco();
                     Fornecedor forn = new Fornecedor();
                     
+                    boolean newEndereco = textboo ("Digite [sim] para inserir um novo Endereco, ou [nao] para sair.");
+                    
+                    if (newEndereco) {
+                    	
+                    	forn.setEnderecos(new ArrayList<>());
+                    }
+                    
+                    while (newEndereco){
+                    	
+                    
+                    forn.setId_fornecedor(
+                    		textint("Digite o ID do fornecedor que sera atribuido esse endereco: "));
+                    
                     end.setId_endereco(	
-                    		textint("Digite o id: "));
+                    		textint("Digite o id do endereco: "));
                     
                     end.setRua(                    
-                    		texto("Digite o rua:"));
+                    		texto("Digite o rua: "));
                     
                     end.setNumero(
                     		textint("Digite o numero: "));
@@ -47,8 +67,10 @@ public class TesteEndereco {
                     end.setCidade(
                     		texto("Digite o cidade: "));
                     
-                    forn.setId_fornecedor(
-                    		textint("Digite o ID do fornecedor que será atribuido esse contato: "));
+                    forn.getEnderecos().add(end);
+                    
+                    }
+
                     
                     System.out.println(bo.adicionarNovoEndereco(forn));
 
