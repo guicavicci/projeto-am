@@ -36,7 +36,7 @@ public class FaturaDAO
 			
 		
          estrutura = con.prepareStatement
-        ("INSERT INTO FATURA (ID_FATURA, NUMERO_FATURA, CONSUMO_KWH, VALOR, ID_CLIENTE_FK_F) VALUES (?,?,?,?)");
+        ("INSERT INTO FATURA (ID_FATURA, NUMERO_FATURA, CONSUMO_KWH, VALOR, ID_CLIENTE_FK_F) VALUES (?,?,?,?,?)");
         estrutura.setInt(1, fatura.getId_fatura());
         estrutura.setString(2, fatura.getNumeroFatura());
         estrutura.setString(3, fatura.getConsumoKwh());
@@ -49,6 +49,8 @@ public class FaturaDAO
         
         return "Criado com sucesso!";
     } 
+    
+    
     //Pegar fatura
     public List<Fatura> consultarPorCliente(int i) throws Exception
     {

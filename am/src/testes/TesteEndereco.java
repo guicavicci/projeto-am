@@ -3,6 +3,7 @@ package testes;
 import javax.swing.JOptionPane;
 
 import beans.Endereco;
+import beans.Fatura;
 import beans.Fornecedor;
 import bo.EnderecoBO;
 
@@ -53,13 +54,14 @@ public class TesteEndereco {
 
                 }else if (op=='C'){
                 	//Consultar
+                	
+                	
                     bo = new EnderecoBO();
-                    Endereco end = bo.retornaEndereco(textint("Digite o cep do Endereco:"));
+                    int i = (textint("Digite o id do Endereco:"));
+                 	Endereco end = new Endereco();
+                 	bo.retornaEndereco(i);
+                    	
                     
-                    System.out.println("Rua: " + end.getRua());
-                    System.out.println("Numero: " + end.getNumero());
-                    System.out.println("Cidade: " + end.getCidade());
-
                 }else if (op=='A'){
                     bo = new EnderecoBO();
                     String end = bo.alterarEndereco(
@@ -68,7 +70,7 @@ public class TesteEndereco {
                     		texto ("Digite a nova cidade: "),
                     		textint("Digite o id que será: "));
                     		              		
-                    System.out.println(end + "campo email atualizado");
+                    System.out.println(end);
 
 
                 }

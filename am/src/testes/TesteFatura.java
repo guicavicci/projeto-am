@@ -1,5 +1,7 @@
 package testes;
 
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 
 import beans.Cliente;
@@ -47,25 +49,46 @@ public class TesteFatura
                 
                 if (op=='G')
                 {
-                    //o valor é a taxa vezes o consumo
-                    bo = new FaturaBO();
-                	fat.setId_fatura(
-                	textint ("Insira o id da fatura: "));	
-                    
-                    fat.setNumeroFatura
-                    (texto ("Insira o numero da fatura: "));
-                    
-                    fat.setConsumoKwh
-                    (texto ("Insira o consumo em KWH: "));
-                    
-                    fat.setValor
-                    (textdoub("Insira o valor: "));
-                    
-                    cli.setId_cliente
-                    (textint("Digite o ID do cliente, responsável por essa fatura: "));
-          		              
-                   	System.out.println(bo.adicionarNovaFatura(cli));
-                    
+                	
+                   boolean newFatura = textboo ("Digite [sim] para inserir uma fatura, ou [nao] para sair.");
+                   
+                   while (newFatura){
+                	   
+            	   
+                       bo = new FaturaBO();
+                   	
+                       while(newFatura) {
+                       
+                       fat.setId_fatura(
+                   	textint ("Insira o id da fatura: "));	
+                       
+                       fat.setNumeroFatura
+                       (texto ("Insira o numero da fatura: "));
+                       
+                       fat.setConsumoKwh
+                       (texto ("Insira o consumo em KWH: "));
+                       
+                       fat.setValor
+                       (textdoub("Insira o valor: "));
+                       
+                       cli.setId_cliente
+                       (textint("Digite o ID do cliente, responsável por essa fatura: "));
+                       
+                       cli.getFatura().add(fat);
+                       
+                       
+                       }
+                       
+                                 		              
+                      	System.out.println(bo.adicionarNovaFatura(cli));
+                       
+                      
+                	   
+                	   
+                   }
+                   
+                   
+          
             
                 }
                 
