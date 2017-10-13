@@ -41,7 +41,7 @@ public class TesteCliente {
                 if (op=='G'){
                 	bo = new ClienteBO();
                     cliente.setId_cliente(	
-                    		textint("Digite o valor do debito: "));
+                    		textint("Digite o id do cliente: "));
                     
                     cliente.setNumeroInstalacao(               
                     		texto("Digite o numero instalacao: "));
