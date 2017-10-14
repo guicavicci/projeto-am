@@ -80,7 +80,7 @@ public class TesteFatura
                        fat.setValor
                        (textdoub("Insira o valor: ") + fat.getValor());
                        
-                       cliente.getId_cliente();
+                       fat.setFkcliente(cliente.getId_cliente());
                        
                        //cliente.setId_cliente
                        //(cliente.getId_cliente());

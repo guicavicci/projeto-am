@@ -52,12 +52,32 @@ public class FaturaDAO
     } 
     
     
+    public String adicionarFatura2(Cliente cli)throws Exception
+    {
+    	for (Fatura fatura : cli.getFatura()) {
+			
+		
+         estrutura = con.prepareStatement
+        ("INSERT INTO FATURA (ID_FATURA, NUMERO_FATURA, CONSUMO_KWH, VALOR, ID_CLIENTE_FK_F) VALUES (?,?,?,?,?)");
+        estrutura.setInt(1, fatura.getId_fatura());
+        estrutura.setString(2, fatura.getNumeroFatura());
+        estrutura.setString(3, fatura.getConsumoKwh());
+        estrutura.setDouble(4, fatura.getValor());
+        estrutura.setInt(5, fatura.getFkcliente());
+        estrutura.executeUpdate();
+        estrutura.close();
+    	}
+        
+        
+        return "Criado com sucesso!";
+    } 
+    
     //Pegar fatura
     public List<Fatura> consultarPorCliente(int i) throws Exception
     {
     	List<Fatura> lista = new ArrayList <>();
         estrutura = con.prepareStatement
-        ("SELECT id_fatura, NUMERO_FATURA, CONSUMO_KWH,  FROM FATURA, VALOR WHERE ID_CLIENTE_FK_F = ?");
+        ("SELECT id_fatura, NUMERO_FATURA, CONSUMO_KWH, VALOR FROM FATURA WHERE ID_CLIENTE_FK_F = ?");
         estrutura.setInt(1, i);
         resultado = estrutura.executeQuery();
         while(resultado.next())
@@ -66,7 +86,8 @@ public class FaturaDAO
         			  resultado.getInt("id_fatura"),
         			  resultado.getString("NUMERO_FATURA"),
         			  resultado.getString("CONSUMO_KWH"),
-        			  resultado.getDouble("VALOR")
+        			  resultado.getDouble("VALOR"),
+        			  resultado.getInt("ID_CLIENTE_FK_F")
         			
         			));
         	
