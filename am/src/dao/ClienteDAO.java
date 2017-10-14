@@ -24,7 +24,7 @@ public class ClienteDAO {
 	
 	public String gravarCliente(Cliente cliente) throws Exception {
 		estrutura = con.prepareStatement
-				("INSERT INTO Cliente (ID_CLIENTE, NUMERO_INSTALACAO, DEBITO PENDENTE, STATUS) VALUES(?,?,?)");
+				("INSERT INTO Cliente (ID_CLIENTE, NUMERO_INSTALACAO, DEBITO_PENDENTE, STATUS) VALUES(?,?,?)");
 		estrutura.setInt(1, cliente.getId_cliente());
 		estrutura.setString(2, cliente.getNumeroInstalacao());
 		estrutura.setString(3, cliente.getDebitoPendente());

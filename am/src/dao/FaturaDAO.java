@@ -29,6 +29,7 @@ public class FaturaDAO
         con.close();
         return "Conexão fechada com sucesso!";
     }
+    
     //Criar fatura
     public String adicionarFatura(Cliente cli)throws Exception
     {

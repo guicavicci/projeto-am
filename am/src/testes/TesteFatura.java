@@ -58,7 +58,7 @@ public class TesteFatura
                    
                    if (newFatura) {
                 	   
-                	   cli.setFatura(new ArrayList<>());
+                	   cliente.setFatura(new ArrayList<>());
                 	   
                    }
            	   
@@ -69,26 +69,30 @@ public class TesteFatura
                     
                         
                        fat.setId_fatura(
-                       textint ("Insira o id da fatura: "));
+                       textint ("Insira o id da fatura: ") + fat.getId_fatura());
                        
                        fat.setNumeroFatura
-                       (texto ("Insira o numero da fatura: " ));
+                       (texto ("Insira o numero da fatura: " ) + fat.getNumeroFatura());
                        
                        fat.setConsumoKwh
-                       (texto ("Insira o consumo em KWH: " ));
+                       (texto ("Insira o consumo em KWH: " ) + fat.getConsumoKwh());
                        
                        fat.setValor
-                       (textdoub("Insira o valor: "));
+                       (textdoub("Insira o valor: ") + fat.getValor());
                        
-                       cli.setId_cliente
-                       (textint("Digite o ID do cliente, responsável por essa fatura: ") + cliente.getId_cliente());
+                       cliente.getId_cliente();
+                       
+                       //cliente.setId_cliente
+                       //(cliente.getId_cliente());
                        
                        
                        
-                       cli.getFatura().add(fat);
                        
-                       System.out.println(bo.adicionarNovaFatura(cli));
                        
+                      cliente.getFatura().add(fat);
+                       
+
+                       System.out.println(bocli.AdicionarNovoCliente(cliente));
                        
                        }
                        
