@@ -42,7 +42,7 @@ public class ClienteDAO {
 	public Cliente selecionarCliente(int i) throws Exception{
 		Cliente cliente = new Cliente();
 		estrutura = con.prepareStatement
-				("SELECT ID_CLIENTE, NUMERO_INSTALACAO, DEBITO PENDENTE FROM CLIETE WHERE ID_CLIENTE = ? AND STATUS = 0");
+				("SELECT ID_CLIENTE, NUMERO_INSTALACAO, DEBITO_PENDENTE FROM CLIENTE WHERE ID_CLIENTE = ? AND STATUS = 0");
 		estrutura.setInt(1, i);
 		rs = estrutura.executeQuery();							
 		if(rs.next()) {

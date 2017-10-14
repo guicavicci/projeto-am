@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 
 import beans.Cliente;
 import beans.Fatura;
+import bo.ClienteBO;
 import bo.FaturaBO;
 
 public class TesteFatura
@@ -52,6 +53,9 @@ public class TesteFatura
                 	
                    boolean newFatura = textboo ("Digite [sim] para inserir uma fatura, ou [nao] para sair.");
                    
+                   ClienteBO bocli = new ClienteBO();
+                   Cliente cliente = bocli.consultarCliente(textint ("Digite o id do cliente que deseja inserir essa nova fatura: "));
+                   
                    if (newFatura) {
                 	   
                 	   cli.setFatura(new ArrayList<>());
@@ -63,10 +67,9 @@ public class TesteFatura
                    	
                        while(newFatura) {
                     
-                       bo = new FaturaBO();
-                       
+                        
                        fat.setId_fatura(
-                       textint ("Insira o id da fatura: "));	
+                       textint ("Insira o id da fatura: "));
                        
                        fat.setNumeroFatura
                        (texto ("Insira o numero da fatura: " ));
@@ -78,7 +81,9 @@ public class TesteFatura
                        (textdoub("Insira o valor: "));
                        
                        cli.setId_cliente
-                       (textint("Digite o ID do cliente, responsável por essa fatura: "));
+                       (textint("Digite o ID do cliente, responsável por essa fatura: ") + cliente.getId_cliente());
+                       
+                       
                        
                        cli.getFatura().add(fat);
                        
