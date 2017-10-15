@@ -69,10 +69,10 @@ public class TesteFatura
                     
                         
                        fat.setId_fatura(
-                       textint ("Insira o id da fatura: ") + fat.getId_fatura());
+                       textint ("Insira o id da fatura: "));
                        
                        fat.setNumeroFatura
-                       (texto ("Insira o numero da fatura: " ) + fat.getNumeroFatura());
+                       (texto ("Insira o numero da fatura: " ));
                        
                        fat.setConsumoKwh
                        (texto ("Insira o consumo em KWH: " ) + fat.getConsumoKwh());
@@ -80,7 +80,9 @@ public class TesteFatura
                        fat.setValor
                        (textdoub("Insira o valor: ") + fat.getValor());
                        
-                       fat.setFkcliente(cli.getId_cliente());
+                       //fat.setFkcliente(cli.getId_cliente());
+                       
+                       fat.setFkcliente(textint("aaaa"));
                        
                        //cliente.setId_cliente
                        //(cliente.getId_cliente());
