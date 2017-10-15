@@ -85,7 +85,7 @@ public class FaturaDAO
         			  resultado.getString("NUMERO_FATURA"),
         			  resultado.getString("CONSUMO_KWH"),
         			  resultado.getDouble("VALOR"),
-        			  resultado.getInt("ID_CLIENTE_FK_F")
+        			  resultado.getInt("ID_CLIENTE_FK")
         			
         			));
         	
