@@ -80,19 +80,15 @@ public class TesteFatura
                        fat.setValor
                        (textdoub("Insira o valor: ") + fat.getValor());
                        
-                       fat.setFkcliente(cliente.getId_cliente());
+                       fat.setFkcliente(cli.getId_cliente());
                        
                        //cliente.setId_cliente
                        //(cliente.getId_cliente());
                        
-                       
-                       
-                       
-                       
-                      cliente.getFatura().add(fat);
+                       cliente.getFatura().add(fat);
                        
 
-                       System.out.println(bocli.AdicionarNovoCliente(cliente));
+                       System.out.println(bo.adicionarNovaFatura(cliente));
                        
                        }
                        

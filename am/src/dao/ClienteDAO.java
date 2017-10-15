@@ -48,7 +48,7 @@ public class ClienteDAO {
 		if(rs.next()) {
 			cliente.setId_cliente(rs.getInt("ID_CLIENTE"));
 			cliente.setNumeroInstalacao(rs.getString("numero_instalacao"));
-			cliente.setDebitoPendente(rs.getString("debito_pentende"));
+			cliente.setDebitoPendente(rs.getString("debito_pendente"));
 		
 		//Fatura
 		

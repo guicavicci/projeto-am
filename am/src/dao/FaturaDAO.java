@@ -15,11 +15,9 @@ public class FaturaDAO
     private Connection con;
     private PreparedStatement estrutura;
     private ResultSet resultado;
-    
-    public FaturaDAO(){}
 
     //Construtor (abre conexão)
-    public FaturaDAO(Connection con)throws Exception
+    public FaturaDAO()throws Exception
     {
         con = new ConexaoFactory().conectar();
     }
@@ -42,7 +40,7 @@ public class FaturaDAO
         estrutura.setString(2, fatura.getNumeroFatura());
         estrutura.setString(3, fatura.getConsumoKwh());
         estrutura.setDouble(4, fatura.getValor());
-        estrutura.setInt(5, cli.getId_cliente());
+        estrutura.setInt(5, fatura.getFkcliente());
         estrutura.executeUpdate();
         estrutura.close();
     	}
