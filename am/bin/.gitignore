@@ -1,4 +1,7 @@
-/dao/
 /beans/
-/testes/
 /bo/
+/conexao/
+/dao/
+/excecao/
+/lib/
+/testes/

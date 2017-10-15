@@ -20,6 +20,11 @@ public class TesteCliente {
 		
 	}
 	
+	static double textdoub (String textdoub) {
+		return Double.parseDouble(JOptionPane.showInputDialog(textdoub));
+		
+	}
+	
 	static boolean textboo (String textboo) {
 		textboo = JOptionPane.showInputDialog(textboo);
 		return textboo.equalsIgnoreCase("sim") ?  true : false;
@@ -27,8 +32,8 @@ public class TesteCliente {
 	}
 
     public static void main(String[] args) {
-        ClienteBO bo = null;
-        Cliente cliente = null;
+        ClienteBO bo = new ClienteBO();
+        Cliente cliente = new Cliente();
         try{
             bo = new ClienteBO();
             do{
@@ -39,7 +44,6 @@ public class TesteCliente {
                                 + "<A> - Alterar Cliente\n"
                                 + "<D> - Desativar").toUpperCase().charAt(0);
                 if (op=='G'){
-                	bo = new ClienteBO();
                     cliente.setId_cliente(	
                     		textint("Digite o id do cliente: "));
                     
@@ -62,16 +66,25 @@ public class TesteCliente {
                     while (newFatura) {
                     
                     	Fatura fat = new Fatura();
-                    	System.out.println("Digite o id da fatura" + fat.getId_fatura());
-                    	System.out.println("Numero da fatura: " + fat.getNumeroFatura());
-                    	System.out.println("Consumo: " + fat.getConsumoKwh());
-                    	System.out.println("Valor da fatura: " + fat.getValor());
+                    	
+                    	fat.setId_fatura(textint("Digite o id da fatura: "));
+                    	
+                    	fat.setNumeroFatura(texto("Digite o numero da fatura: "));
+                    	
+                    	fat.setConsumoKwh(texto("Digite o consumo em KWH: "));
+                    	
+                    	fat.setValor(textdoub("Digite o valor: "));
+                    	               	
                     	
                     	cliente.getFatura().add(fat);
              
                     		
                     
                     System.out.println(bo.AdicionarNovoCliente(cliente));		
+                    
+                    newFatura = textboo ("Digite [sim] para inserir uma fatura, ou [nao] para sair.");
+                    
+                    
                     }
                 }else if (op=='C'){
                 	//Consultar
