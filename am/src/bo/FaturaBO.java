@@ -20,7 +20,7 @@ public class FaturaBO{
  }
  
  
- public static List<Fatura> mostrarFatura (int i) throws Exception {
+ public static List<Fatura> mostrarFaturaPorCliente (int i) throws Exception {
 	 
 	 FaturaDAO dao = new FaturaDAO();
 
@@ -32,6 +32,18 @@ public class FaturaBO{
 	 
  }
  
+ 
+ public static List<Fatura> mostrarFatura(int i) throws Exception {
+	 
+	 FaturaDAO dao = new FaturaDAO();
+
+	 List<Fatura>  fat = dao.consultarPorFatura(i);
+	 dao.fechar();
+	 
+	 return fat;
+	 
+	 
+ }
  
  public static String acrescimoJuros (double j, int i) throws Exception {
 	 

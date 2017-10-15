@@ -89,11 +89,34 @@ public class FaturaDAO
         			
         			));
         	
-   
-        	
         }
         
-     	return lista;
+    return lista;
+     	
+    }
+    
+    public List<Fatura> consultarPorFatura(int i) throws Exception
+        {
+        	List<Fatura> lista = new ArrayList <>();
+            estrutura = con.prepareStatement
+            ("SELECT ID_FATURA, NUMERO_FATURA, CONSUMO_KWH, VALOR FROM FATURA WHERE ID_FATURA = ?");
+            estrutura.setInt(1, i);
+            resultado = estrutura.executeQuery();
+            while(resultado.next())
+            {
+            	lista.add( new Fatura (
+            			  resultado.getInt("id_fatura"),
+            			  resultado.getString("NUMERO_FATURA"),
+            			  resultado.getString("CONSUMO_KWH"),
+            			  resultado.getDouble("VALOR")
+            			
+            			));
+            	
+       
+            	
+            }
+            
+         	return lista;
         	
 			
     }

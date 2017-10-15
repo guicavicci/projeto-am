@@ -104,14 +104,25 @@ public class TesteFatura
                 else if (op=='P')
                 {
                     
-                	bo.mostrarFatura(textint("Digite o id da Fatura que deseja selecionar: "));
+
+			       	for (Fatura f : bo.mostrarFatura(textint("Digite o id da Fatura que deseja selecionar: "))) {
+			       		
+			       		System.out.println("Id da fatura: " + f.getId_fatura());
+			       		System.out.println("Numero da fatura: " + f.getNumeroFatura());
+			       		System.out.println("Consumo KWH: " + f.getConsumoKwh());
+			       		System.out.println("Valor: " + f.getValor());
+			       		
+						
+					}
                 }
                 else if (op=='A')
                 {
                 	
-                	bo.acrescimoJuros(
+                	String x = bo.acrescimoJuros(
                 			textdoub("Insira o valor que será acrescentado de juros %: "),
                 			textint("Digite o id da Fatura que sofrerá o acescimo: "));
+                	
+                	System.out.println(x);
 
                 }
                 else
