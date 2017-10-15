@@ -75,22 +75,19 @@ public class TesteFatura
                        (texto ("Insira o numero da fatura: " ));
                        
                        fat.setConsumoKwh
-                       (texto ("Insira o consumo em KWH: " ) + fat.getConsumoKwh());
+                       (texto ("Insira o consumo em KWH: " ));
                        
                        fat.setValor
-                       (textdoub("Insira o valor: ") + fat.getValor());
-                       
-                       //fat.setFkcliente(cli.getId_cliente());
-                       
-                       fat.setFkcliente(textint("aaaa"));
-                       
-                       //cliente.setId_cliente
-                       //(cliente.getId_cliente());
+                       (textdoub("Insira o valor: "));
                        
                        cliente.getFatura().add(fat);
                        
 
                        System.out.println(bo.adicionarNovaFatura(cliente));
+                       
+                      newFatura = textboo ("Digite [sim] para inserir uma fatura, ou [nao] para sair.");
+                       
+                       
                        
                        }
                        

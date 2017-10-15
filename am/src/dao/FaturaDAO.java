@@ -40,7 +40,7 @@ public class FaturaDAO
         estrutura.setString(2, fatura.getNumeroFatura());
         estrutura.setString(3, fatura.getConsumoKwh());
         estrutura.setDouble(4, fatura.getValor());
-        estrutura.setInt(5, fatura.getFkcliente());
+        estrutura.setInt(5, cli.getId_cliente());
         estrutura.executeUpdate();
         estrutura.close();
     	}
@@ -50,6 +50,7 @@ public class FaturaDAO
     } 
     
     
+   /*
     public String adicionarFatura2(Cliente cli)throws Exception
     {
     	for (Fatura fatura : cli.getFatura()) {
@@ -68,7 +69,7 @@ public class FaturaDAO
         
         
         return "Criado com sucesso!";
-    } 
+    } */ 
     
     //Pegar fatura
     public List<Fatura> consultarPorCliente(int i) throws Exception
@@ -84,8 +85,7 @@ public class FaturaDAO
         			  resultado.getInt("id_fatura"),
         			  resultado.getString("NUMERO_FATURA"),
         			  resultado.getString("CONSUMO_KWH"),
-        			  resultado.getDouble("VALOR"),
-        			  resultado.getInt("ID_CLIENTE_FK")
+        			  resultado.getDouble("VALOR")
         			
         			));
         	

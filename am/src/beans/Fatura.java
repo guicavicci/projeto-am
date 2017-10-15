@@ -6,20 +6,18 @@ public class Fatura
 	private String numeroFatura;
     private String consumoKwh;
     private double valor;
-    private int fkcliente;
 	
     public String getAll() {
     	
-    	return id_fatura + "\n" + numeroFatura + "\n" + consumoKwh + "\n" + valor + "\n" + fkcliente;
+    	return id_fatura + "\n" + numeroFatura + "\n" + consumoKwh + "\n" + valor;
     	
     }
     
-    public void setAll(int id, String nf, String c, double v, int fk) {
+    public void setAll(int id, String nf, String c, double v) {
     	id_fatura = id;
     	numeroFatura = nf;
     	consumoKwh = c;
     	valor = v;
-    	fkcliente =fk;
     }
     
     
@@ -28,13 +26,12 @@ public class Fatura
 		super();
 	}
 
-	public Fatura(int id_fatura, String numeroFatura, String consumoKwh, double valor, int fkcliente) {
+	public Fatura(int id_fatura, String numeroFatura, String consumoKwh, double valor) {
 		super();
 		this.id_fatura = id_fatura;
 		this.numeroFatura = numeroFatura;
 		this.consumoKwh = consumoKwh;
 		this.valor = valor;
-		this.fkcliente = fkcliente;
 	}
 
 	public int getId_fatura() {
@@ -68,15 +65,6 @@ public class Fatura
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
-
-	public int getFkcliente() {
-		return fkcliente;
-	}
-
-	public void setFkcliente(int fkcliente) {
-		this.fkcliente = fkcliente;
-	}
-    
    
     
 }
