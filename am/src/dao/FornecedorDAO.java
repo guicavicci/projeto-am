@@ -11,6 +11,7 @@ public class FornecedorDAO {
     
         private Connection con;
         private PreparedStatement estrutura;
+    	private ResultSet resultado;
         
         public FornecedorDAO () throws Exception {
             con = new ConexaoFactory().conectar();
@@ -53,18 +54,18 @@ public class FornecedorDAO {
             estrutura = con.prepareStatement
                     ("SELECT NUMERO_CONTRATO, GERENTE_CONTRATO FROM Fornecedor WHERE ID_FORNECEDOR = ? AND STATUS = 0");
             estrutura.setInt (1,i);
-            ResultSet resultado = estrutura.executeQuery();                            
+            resultado = estrutura.executeQuery();                            
             if(resultado.next()) {
                 forn.setNumeroContrato(resultado.getString("numero_contrato"));
                 forn.setGerenteContrato(resultado.getString("gerente_contrato"));  
                 
                 //Contato
-                ContatoDAO dao = new ContatoDAO ();
-                forn.setContatos(dao.getContatoPorFornecedor(resultado.getInt("ID_FORNECEDOR")));
+                ContatoDAO daocont = new ContatoDAO ();
+                forn.setContatos(daocont.getContatoPorFornecedor(resultado.getInt("ID_FORNECEDOR")));
                 
                 //Endereco
-                EnderecoDAO end = new EnderecoDAO ();
-                forn.setEnderecos(end.getEnderecoPorFornecedor(resultado.getInt("ID_FORNECEDOR")));
+                EnderecoDAO daoend = new EnderecoDAO ();
+                forn.setEnderecos(daoend.getEnderecoPorFornecedor(resultado.getInt("ID_FORNECEDOR")));
                 
             }
             resultado.close();
