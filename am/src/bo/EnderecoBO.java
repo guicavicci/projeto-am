@@ -17,7 +17,7 @@ public class EnderecoBO {
 	} 
 	
 	
-	public static List<Endereco> retornaEndereco (int i) throws Exception {
+	public static List<Endereco> retornaEnderecoPorFornecedor (int i) throws Exception {
 		EnderecoDAO dao = new EnderecoDAO();
 		List<Endereco> listaEnd = dao.getEnderecoPorFornecedor(i);
 		dao.fechar();
@@ -26,6 +26,14 @@ public class EnderecoBO {
 		
 	}
 	
+	public static List<Endereco> retornaEndereco (int i) throws Exception {
+		EnderecoDAO dao = new EnderecoDAO();
+		List<Endereco> listaEnd = dao.getEndereco(i);
+		dao.fechar();
+		
+		return listaEnd;
+		
+	}
 	public static String alterarEndereco (String r,int n, String c, int i) throws Exception {
 		
 		EnderecoDAO dao = new EnderecoDAO();

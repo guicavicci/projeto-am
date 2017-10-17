@@ -34,12 +34,12 @@ public class TesteFatura
 	}
     public static void main(String[] args)
     {
-        FaturaBO bo = null;
+        FaturaBO bo = new FaturaBO();
         Fatura fat = new Fatura();
         Cliente cli = new Cliente();
         try
         {
-            bo = new FaturaBO();
+           
             do
             {
                 char op =JOptionPane.showInputDialog
@@ -62,9 +62,8 @@ public class TesteFatura
                 	   
                    }
            	   
-            	   
-                       
-                   	
+         	   
+                                          	
                        while(newFatura) {
                     
                         
@@ -90,12 +89,7 @@ public class TesteFatura
                        
                        
                        }
-                       
-                                 		              
-                      	
-                       
-                      
-                	   
+                                    	   
                 	   
                    }
                    

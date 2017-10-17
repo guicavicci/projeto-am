@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import beans.Contato;
 import beans.Endereco;
 import beans.Fornecedor;
 import bo.EnderecoBO;
+import bo.FornecedorBO;
 
 public class TesteEndereco {
 	
@@ -27,22 +29,22 @@ public class TesteEndereco {
 	}
 
     public static void main(String[] args) {
-        EnderecoBO bo = null;
+        EnderecoBO bo = new EnderecoBO();
+        Endereco end = new Endereco();
+        Fornecedor forn = new Fornecedor();
+        FornecedorBO boforn = new FornecedorBO();
         try{
-            bo = new EnderecoBO();
             do{
                 char op =texto
                         ("Escolha uma opção:\n "
                                 + "<G> - Gravar Endereco\n "
                                 + "<C> - Consultar\n "
-                                + "<A> - Mudar Cidade\n"
-                                + "<D> - Deletar").toUpperCase().charAt(0);
+                                + "<A> - Mudar Cidade").toUpperCase().charAt(0);
                 if (op=='G'){
-                    bo = new EnderecoBO();
-                    Endereco end = new Endereco();
-                    Fornecedor forn = new Fornecedor();
+
                     
                     boolean newEndereco = textboo ("Digite [sim] para inserir um novo Endereco, ou [nao] para sair.");
+                    forn = boforn.consultarPorIds(textint("Digite o id do fornecedor que deseja inserir um novo endereco: "));
                     
                     if (newEndereco) {
                     	
@@ -51,21 +53,18 @@ public class TesteEndereco {
                     
                     while (newEndereco){
                     	
-                    
-                    forn.setId_fornecedor(
-                    		textint("Digite o ID do fornecedor que sera atribuido esse endereco: "));
-                    
+                                           
                     end.setId_endereco(	
                     		textint("Digite o id do endereco: "));
                     
                     end.setRua(                    
-                    		texto("Digite o rua: "));
+                    		texto("Digite a rua: "));
                     
                     end.setNumero(
                     		textint("Digite o numero: "));
                     
                     end.setCidade(
-                    		texto("Digite o cidade: "));
+                    		texto("Digite a cidade: "));
                     
                     forn.getEnderecos().add(end);
                     
@@ -77,33 +76,30 @@ public class TesteEndereco {
                 }else if (op=='C'){
                 	//Consultar
                 	
+                	for (Endereco e : bo.retornaEndereco(textint("Digite o id do Endereco: "))) {
+                		
+                		System.out.println("Id do Endereco: " + e.getId_endereco());
+                		System.out.println("Rua: " + e.getRua());
+                		System.out.println("Numero" + e.getRua());
+                		System.out.println("Cidade" + e.getCidade());
+                		
+						
+					}
                 	
-                    bo = new EnderecoBO();
-                    int i = (textint("Digite o id do Endereco:"));
-                 	Endereco end = new Endereco();
-                 	bo.retornaEndereco(i);
-                    	
+
                     
                 }else if (op=='A'){
-                    bo = new EnderecoBO();
-                    String end = bo.alterarEndereco(
+                  String x = bo.alterarEndereco(
                     		texto("Digite a nova rua: "),
                     		textint("Digite o novo numero: "),
                     		texto ("Digite a nova cidade: "),
-                    		textint("Digite o id que será: "));
+                    		textint("Digite o id do endereco que será alterado: "));
                     		              		
-                    System.out.println(end);
+                    System.out.println(x);
 
 
                 }
-                else if (op == 'D') {
-                	//Deletar
-             	
-                	bo = new EnderecoBO();
-                	bo.deletarEndereco(
-                			textint("Digite o id do Endereco que será excluido! "));           	
-                }
-                
+                               
                 else{
                     System.out.println("Opção inválida!!!");
                 }

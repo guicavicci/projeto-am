@@ -18,7 +18,7 @@ public class ContatoBO {
 		
 	}
 	
-	public static List<Contato> retornaContato (int i) throws Exception {
+	public static List<Contato> retornaContatoPorFornecedor (int i) throws Exception {
 		ContatoDAO dao = new ContatoDAO();
 		List<Contato> c = dao.getContatoPorFornecedor(i);
 		dao.fechar();
@@ -27,9 +27,18 @@ public class ContatoBO {
 		
 	}
 	
+	public static List<Contato> retornaContato(int i) throws Exception {
+		ContatoDAO dao = new ContatoDAO();
+		List<Contato> c = dao.getContato(i);
+		dao.fechar();
+		
+		return c;
+		
+	}
+	
 	public static String alterarTelefonePorFornecedor (String t, int i) throws Exception {
 		ContatoDAO dao = new ContatoDAO();
-		dao.mudarTelefonePorFornecedor(t, i);
+		dao.mudarTelefone(t, i);
 		dao.fechar();		
 		
 		return "Telefone alterado!";

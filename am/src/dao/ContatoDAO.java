@@ -75,10 +75,39 @@ public class ContatoDAO {
 	
 	}
 	
-	public String mudarTelefonePorFornecedor (String tel, int i) throws Exception {
+	public List<Contato> getContato(int i) throws Exception {
+		
+		List<Contato> lista = new ArrayList<>();
+		estrutura.getConnection().prepareStatement
+		("SELECT ID_CONTATO, TELEFONE, EMAIL, FACEBOOK FROM CONTATO WHERE ID_CONTATO = ?");
+		estrutura.setInt(1, i);
+		rs = estrutura.executeQuery();
+		
+		while (rs.next())
+			
+			lista.add(new Contato(
+					rs.getInt("ID_CONTATO"),
+					rs.getString("TELEFONE"),
+					rs.getString("EMAIL"),
+					rs.getString("FACEBOOK")
+					
+					
+					
+					));
+		estrutura.close();
+		rs.close();
+		return lista;
+				
+
+			
+	
+	}
+	
+	
+	public String mudarTelefone(String tel, int i) throws Exception {
 		
 		
-		estrutura.getConnection().prepareStatement("UPDATE CONTATO SET TELEFONE = ? WHERE ID_FORNECEDOR_FK_C = ?");
+		estrutura.getConnection().prepareStatement("UPDATE CONTATO SET TELEFONE = ? WHERE ID_CONTATO = ?");
 		estrutura.setString(1, tel);
 		estrutura.setInt(2, i);
 		int x = estrutura.executeUpdate();

@@ -41,7 +41,7 @@ public class TesteCliente {
                         ("Escolha uma opção:\n "
                                 + "<G> - Gravar Cliente\n "
                                 + "<C> - Consultar\n "
-                                + "<A> - Alterar Cliente\n"
+                                + "<A> - Alterar Telefone Cliente\n"
                                 + "<D> - Desativar").toUpperCase().charAt(0);
                 if (op=='G'){
                     cliente.setId_cliente(	
