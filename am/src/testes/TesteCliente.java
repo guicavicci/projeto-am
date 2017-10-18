@@ -49,7 +49,7 @@ public class TesteCliente {
                                 + "<G> - Gravar Cliente\n "
                                 + "<C> - Consultar\n "
                                 + "<A> - Alterar Debito Pendente Cliente\n"
-                                + "<D> - Desativar").toUpperCase().charAt(0);
+                                + "<S> - Alterar status").toUpperCase().charAt(0);
                 if (op=='G'){
                     cliente.setIdCliente(	
                     		textint("Digite o id do cliente: "));
@@ -125,12 +125,12 @@ public class TesteCliente {
                 	
 
                 }
-                else if (op == 'D') {
+                else if (op == 'S') {
                 
                 	String d = bo.alterarStatusCliente(
                  			
                  			status("Digite [deastivar] para desativar ou [ativar] para ativar o Cliente: "),
-                 			textint("Digite o id do Cliente que deseja desativar: ")
+                 			textint("Digite o id do Cliente que deseja alterar o status: ")
                  			);
                 	System.out.println(d);
                 	

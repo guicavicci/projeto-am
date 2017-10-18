@@ -44,7 +44,7 @@ public class TesteFornecedor {
                                 + "<G> - Gravar Fornecedor\n "
                                 + "<C> - Consultar\n "
                                 + "<A> - Alterar Gerente\n"
-                                + "<D> - Deletar").toUpperCase().charAt(0);
+                                + "<S> - Alterar status").toUpperCase().charAt(0);
                 if (op=='G'){
                     bo = new FornecedorBO();
                     Fornecedor fornecedor = new Fornecedor();
@@ -138,22 +138,32 @@ public class TesteFornecedor {
                     System.out.println("Email: " + c.getEmail());
                     System.out.println("Facebook: " + c.getFacebook());
                     }
+                    
+                    boolean listaEndereco = textboo("Digite [sim] para listar os enderecos, e [nao] para sair");
+                    Endereco end = new Endereco();
+                    for (Endereco e : forn.getEnderecos()) {
+                    	System.out.println(("Id do Endereco: " + e.getIdEndereco()));
+                    	System.out.println("Rua: " + e.getRua());
+                    	System.out.println("Numero: " + e.getNumero());
+                    	System.out.println("Cidade: " + e.getCidade());
+						
+					}
                 }else if (op=='A'){
                     bo = new FornecedorBO();
                     String p = bo.mudarGerente(
                     		texto("Digite o nome do novo gerente:"),
-                    		textint ("Digite o id que irá ter o gerente alterado:"));
+                    		textint ("Digite o id que ira ter o gerente alterado:"));
                     		              		
                     System.out.println(p);
 
 
                 }
-                else if (op == 'D') {
+                else if (op == 'S') {
              	
                 	bo = new FornecedorBO();
                 	String d = bo.statusFornecedor(
                 			status("Digite [deastivar] para desativar ou [ativar] para ativar o Fornecedor: "),
-                			textint("Digite o id do Fornecedor que será desativado: ")
+                			textint("Digite o id do Fornecedor que tera o status alterado: ")
                 			);
                 	System.out.println(d);
                 	
