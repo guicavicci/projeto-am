@@ -9,6 +9,7 @@ import beans.Endereco;
 import beans.Fornecedor;
 import bo.ContatoBO;
 import bo.FornecedorBO;
+import excecao.Excecao;
 
 public class TesteFornecedor {
 	
@@ -35,9 +36,9 @@ public class TesteFornecedor {
 	}
 
     public static void main(String[] args) {
-        FornecedorBO bo = null;
+        FornecedorBO bo = new FornecedorBO();
+        Excecao excecao = new Excecao();
         try{
-            bo = new FornecedorBO();
             do{
                 char op =texto
                         ("Escolha uma opção:\n "
@@ -175,8 +176,9 @@ public class TesteFornecedor {
                     (null, "Continuar?", "FornecedorBO",
                             JOptionPane.YES_NO_OPTION,
                             JOptionPane.QUESTION_MESSAGE)==0);
-        }catch(Exception e){
-            e.printStackTrace();
+        }catch(Exception exception){
+            String x = excecao.tratarExcecao(exception);
+            System.out.println(x);
         }
 
 

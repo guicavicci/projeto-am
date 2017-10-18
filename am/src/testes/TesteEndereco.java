@@ -9,6 +9,7 @@ import beans.Endereco;
 import beans.Fornecedor;
 import bo.EnderecoBO;
 import bo.FornecedorBO;
+import excecao.Excecao;
 
 public class TesteEndereco {
 	
@@ -33,6 +34,7 @@ public class TesteEndereco {
         Endereco end = new Endereco();
         Fornecedor forn = new Fornecedor();
         FornecedorBO boforn = new FornecedorBO();
+        Excecao excecao = new Excecao();
         try{
             do{
                 char op =texto
@@ -113,8 +115,9 @@ public class TesteEndereco {
                     (null, "Continuar?", "EnderecoDAO",
                             JOptionPane.YES_NO_OPTION,
                             JOptionPane.QUESTION_MESSAGE)==0);
-        }catch(Exception e){
-            e.printStackTrace();
+        }catch(Exception exception){
+            String x = excecao.tratarExcecao(exception);
+            System.out.println(x);
         }
 
 

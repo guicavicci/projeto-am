@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import beans.Cliente;
 import beans.Fatura;
 import bo.ClienteBO;
+import excecao.Excecao;
 
 public class TesteCliente {
 	
@@ -41,6 +42,7 @@ public class TesteCliente {
     public static void main(String[] args) {
         ClienteBO bo = new ClienteBO();
         Cliente cliente = new Cliente();
+        Excecao excecao = new Excecao();
         try{
             bo = new ClienteBO();
             do{
@@ -142,8 +144,9 @@ public class TesteCliente {
                     (null, "Continuar?", "ClienteDAO",
                             JOptionPane.YES_NO_OPTION,
                             JOptionPane.QUESTION_MESSAGE)==0);
-        }catch(Exception e){
-            e.printStackTrace();
+        }catch(Exception exception){
+            String x = excecao.tratarExcecao(exception);
+            System.out.println(x);
         }
 
 

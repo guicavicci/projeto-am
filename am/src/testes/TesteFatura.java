@@ -8,6 +8,7 @@ import beans.Cliente;
 import beans.Fatura;
 import bo.ClienteBO;
 import bo.FaturaBO;
+import excecao.Excecao;
 
 public class TesteFatura
 {
@@ -37,6 +38,7 @@ public class TesteFatura
         FaturaBO bo = new FaturaBO();
         Fatura fat = new Fatura();
         Cliente cli = new Cliente();
+        Excecao excecao = new Excecao();
         try
         {
            
@@ -129,9 +131,9 @@ public class TesteFatura
                          JOptionPane.YES_NO_OPTION,
                          JOptionPane.QUESTION_MESSAGE)==0);
         }
-        catch(Exception e)
-        {
-            e.printStackTrace();
+        catch(Exception exception){
+            String x = excecao.tratarExcecao(exception);
+            System.out.println(x);
         }
         
     }

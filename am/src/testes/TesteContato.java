@@ -4,13 +4,11 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import beans.Cliente;
 import beans.Contato;
-import beans.Fatura;
 import beans.Fornecedor;
-import bo.ClienteBO;
 import bo.ContatoBO;
 import bo.FornecedorBO;
+import excecao.Excecao;
 
 public class TesteContato {
 	
@@ -41,6 +39,7 @@ public class TesteContato {
 		Contato contato = new Contato();
 		Fornecedor fornecedor = new Fornecedor ();
 		FornecedorBO fornbo = new FornecedorBO ();
+        Excecao excecao = new Excecao();
 		 try
 	        {
 	           
@@ -129,9 +128,9 @@ public class TesteContato {
 	                         JOptionPane.YES_NO_OPTION,
 	                         JOptionPane.QUESTION_MESSAGE)==0);
 	        }
-	        catch(Exception e)
-	        {
-	            e.printStackTrace();
+		 		catch(Exception exception){
+	            String x = excecao.tratarExcecao(exception);
+	            System.out.println(x);
 	        }
 	        
 	    }
