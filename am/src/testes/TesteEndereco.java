@@ -68,10 +68,16 @@ public class TesteEndereco {
                     
                     forn.getEnderecos().add(end);
                     
+                    System.out.println(bo.adicionarNovoEndereco(forn));
+                    
+                    newEndereco = textboo ("Digite [sim] para inserir um novo Endereco, ou [nao] para sair.");
+                    
                     }
 
                     
-                    System.out.println(bo.adicionarNovoEndereco(forn));
+ 
+                    
+              
 
                 }else if (op=='C'){
                 	//Consultar

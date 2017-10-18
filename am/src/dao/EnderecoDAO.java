@@ -31,7 +31,7 @@ public class EnderecoDAO {
 	public String gravarEndereco(Fornecedor forn) throws Exception{
 		
 		for (Endereco end : forn.getEnderecos()) {
-			estrutura = con.prepareStatement("INSERT INTO ENDERECO (ID_FORNECEDOR_FK_E, ID_ENDERECO, RUA, NUMERO, CIDADE) VALUES (?,?,?,?,?)");
+			estrutura = con.prepareStatement("INSERT INTO ENDERECO (ID_ENDERECO, RUA, NUMERO, CIDADE, ID_FORNECEDOR_FK_E) VALUES (?,?,?,?,?)");
 			estrutura.setInt(1, end.getId_endereco());
 			estrutura.setString(2, end.getRua());
 			estrutura.setInt(3, end.getNumero());
@@ -50,8 +50,8 @@ public class EnderecoDAO {
 		List<Endereco> lista = new ArrayList<>();
 		
 		Endereco end = new Endereco();
-		estrutura.getConnection().prepareStatement
-		("SELECT ID_ENDERECO, RUA, NUMERO, CIDADE FROM ENDERECO WHERE ID_FORNECEDOR = ?");
+		estrutura = con.prepareStatement
+		("SELECT ID_ENDERECO, RUA, NUMERO, CIDADE FROM ENDERECO WHERE ID_FORNECEDOR_FK_E = ?");
 		estrutura.setInt(1, i);
 		rs = estrutura.executeQuery();
 		
@@ -75,7 +75,7 @@ public class EnderecoDAO {
 		List<Endereco> lista = new ArrayList<>();
 		
 		Endereco end = new Endereco();
-		estrutura.getConnection().prepareStatement
+		estrutura= con.prepareStatement
 		("SELECT ID_ENDERECO, RUA, NUMERO, CIDADE FROM ENDERECO WHERE ID_ENDERECO = ?");
 		estrutura.setInt(1, i);
 		rs = estrutura.executeQuery();
@@ -96,7 +96,7 @@ public class EnderecoDAO {
 	}
 	
 	public String mudarEndereco (String r, int n, String c, int i) throws Exception {
-		estrutura.getConnection().prepareStatement
+		estrutura = con.prepareStatement
 		("UPDATE ENDERECO SET RUA = ?, NUMERO = ?, CIDADE = ? WHERE ID_ENDERECO = ?");
 		estrutura.setString(1, r);
 		estrutura.setInt(2, n);

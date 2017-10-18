@@ -52,16 +52,17 @@ public class FornecedorDAO {
         public Fornecedor getFornecedor(int i) throws Exception{
             Fornecedor forn = new Fornecedor();
             estrutura = con.prepareStatement
-                    ("SELECT NUMERO_CONTRATO, GERENTE_CONTRATO FROM Fornecedor WHERE ID_FORNECEDOR = ? AND STATUS = 0");
+                    ("SELECT ID_FORNECEDOR, NUMERO_CONTRATO, GERENTE_CONTRATO FROM Fornecedor WHERE ID_FORNECEDOR = ? AND STATUS = 0");
             estrutura.setInt (1,i);
             resultado = estrutura.executeQuery();                            
             if(resultado.next()) {
-                forn.setNumeroContrato(resultado.getString("numero_contrato"));
-                forn.setGerenteContrato(resultado.getString("gerente_contrato"));  
+            	forn.setId_fornecedor(resultado.getInt("ID_FORNECEDOR"));
+                forn.setNumeroContrato(resultado.getString("NUMERO_CONTRATO"));
+                forn.setGerenteContrato(resultado.getString("GERENTE_CONTRATO"));  
                 
                 //Contato
                 ContatoDAO daocont = new ContatoDAO ();
-                forn.setContatos(daocont.getContatoPorFornecedor(resultado.getInt("ID_FORNECEDOR")));
+                forn.setContatos(daocont.getContatoPorFornecedor(forn.getId_fornecedor()));
                 
                 //Endereco
                 EnderecoDAO daoend = new EnderecoDAO ();

@@ -50,7 +50,7 @@ public class ContatoDAO {
 	public List<Contato> getContatoPorFornecedor (int i) throws Exception {
 		
 		List<Contato> lista = new ArrayList<>();
-		estrutura.getConnection().prepareStatement
+		estrutura = con.prepareStatement
 		("SELECT ID_CONTATO, TELEFONE, EMAIL, FACEBOOK FROM CONTATO WHERE ID_FORNECEDOR_FK_C = ?");
 		estrutura.setInt(1, i);
 		rs = estrutura.executeQuery();
@@ -78,7 +78,7 @@ public class ContatoDAO {
 	public List<Contato> getContato(int i) throws Exception {
 		
 		List<Contato> lista = new ArrayList<>();
-		estrutura.getConnection().prepareStatement
+		estrutura=con.prepareStatement
 		("SELECT ID_CONTATO, TELEFONE, EMAIL, FACEBOOK FROM CONTATO WHERE ID_CONTATO = ?");
 		estrutura.setInt(1, i);
 		rs = estrutura.executeQuery();
@@ -107,7 +107,7 @@ public class ContatoDAO {
 	public String mudarTelefone(String tel, int i) throws Exception {
 		
 		
-		estrutura.getConnection().prepareStatement("UPDATE CONTATO SET TELEFONE = ? WHERE ID_CONTATO = ?");
+		estrutura= con.prepareStatement("UPDATE CONTATO SET TELEFONE = ? WHERE ID_CONTATO = ?");
 		estrutura.setString(1, tel);
 		estrutura.setInt(2, i);
 		int x = estrutura.executeUpdate();
@@ -121,7 +121,7 @@ public class ContatoDAO {
 	
 	
 	public String deletarContato (int i) throws Exception {
-		estrutura.getConnection().prepareStatement("DELETE FROM CONTATO WHERE ID = ?");
+		estrutura=con.prepareStatement("DELETE FROM CONTATO WHERE ID = ?");
 		estrutura.setInt(1, i);
 		int x = estrutura.executeUpdate();
 		
