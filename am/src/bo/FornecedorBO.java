@@ -33,13 +33,13 @@ public class FornecedorBO {
         return "Gerente alterado!";
     }
           
-    public static String desativarFornecedor (boolean s, int i) throws Exception {
+    public static String statusFornecedor (boolean s, int i) throws Exception {
     	
     	FornecedorDAO dao = new FornecedorDAO();
-    	dao.DesativarFornecedor(s, i);
+    	dao.statusFornecedor(s, i);
     	dao.fechar();
     	
-        return "Usuario desativado!";
+        return "Fornecedor modificado!";
         
     
     }

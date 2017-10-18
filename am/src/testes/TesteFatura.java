@@ -67,7 +67,7 @@ public class TesteFatura
                        while(newFatura) {
                     
                         
-                       fat.setId_fatura(
+                       fat.setIdFatura(
                        textint ("Insira o id da fatura: "));
                        
                        fat.setNumeroFatura
@@ -101,7 +101,7 @@ public class TesteFatura
 
 			       	for (Fatura f : bo.mostrarFatura(textint("Digite o id da Fatura que deseja selecionar: "))) {
 			       		
-			       		System.out.println("Id da fatura: " + f.getId_fatura());
+			       		System.out.println("Id da fatura: " + f.getIdFatura());
 			       		System.out.println("Numero da fatura: " + f.getNumeroFatura());
 			       		System.out.println("Consumo KWH: " + f.getConsumoKwh());
 			       		System.out.println("Valor: " + f.getValor());

@@ -32,11 +32,11 @@ public class EnderecoDAO {
 		
 		for (Endereco end : forn.getEnderecos()) {
 			estrutura = con.prepareStatement("INSERT INTO ENDERECO (ID_ENDERECO, RUA, NUMERO, CIDADE, ID_FORNECEDOR_FK_E) VALUES (?,?,?,?,?)");
-			estrutura.setInt(1, end.getId_endereco());
+			estrutura.setInt(1, end.getIdEndereco());
 			estrutura.setString(2, end.getRua());
 			estrutura.setInt(3, end.getNumero());
 			estrutura.setString(4, end.getCidade());
-			estrutura.setInt(5, forn.getId_fornecedor());
+			estrutura.setInt(5, forn.getIdFornecedor());
 			estrutura.executeUpdate();
 			estrutura.close();
 		}

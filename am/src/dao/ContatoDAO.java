@@ -33,11 +33,11 @@ public class ContatoDAO {
 		for (Contato cont : f.getContatos()) {
 			
 		estrutura = con.prepareStatement("INSERT INTO CONTATO (ID_CONTATO, TELEFONE, EMAIL, FACEBOOK, ID_FORNECEDOR_FK_C) VALUES (?,?,?,?,?)");
-		estrutura.setInt(1, cont.getId_contato());
+		estrutura.setInt(1, cont.getIdContato());
 		estrutura.setString(2, cont.getTelefone());
 		estrutura.setString(3, cont.getEmail());
 		estrutura.setString(4, cont.getFacebook());
-		estrutura.setInt(5, f.getId_fornecedor());
+		estrutura.setInt(5, f.getIdFornecedor());
 		
 		estrutura.executeUpdate();
 		estrutura.close();

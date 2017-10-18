@@ -30,12 +30,12 @@ public class ClienteBO {
 	}
 	
 	
-	public static String desativarCliente (boolean s, int i) throws Exception {
+	public static String alterarStatusCliente (boolean s, int i) throws Exception {
 		
 		ClienteDAO dao = new ClienteDAO ();
-		dao.desativarCliente(s, i);
+		dao.statusCliente(s, i);
 		dao.fechar();
-		return "Desativado com sucesso";
+		return "Cliente modificado!";
 		
 		
 	}

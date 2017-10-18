@@ -36,11 +36,11 @@ public class FaturaDAO
 		
          estrutura = con.prepareStatement
         ("INSERT INTO FATURA (ID_FATURA, NUMERO_FATURA, CONSUMO_KWH, VALOR, ID_CLIENTE_FK_F) VALUES (?,?,?,?,?)");
-        estrutura.setInt(1, fatura.getId_fatura());
+        estrutura.setInt(1, fatura.getIdFatura());
         estrutura.setString(2, fatura.getNumeroFatura());
         estrutura.setString(3, fatura.getConsumoKwh());
         estrutura.setDouble(4, fatura.getValor());
-        estrutura.setInt(5, cli.getId_cliente());
+        estrutura.setInt(5, cli.getIdCliente());
         estrutura.executeUpdate();
         estrutura.close();
     	}

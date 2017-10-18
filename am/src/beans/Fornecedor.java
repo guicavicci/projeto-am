@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Fornecedor {
 	
-	private int id_fornecedor;
+	private int idFornecedor;
 	private String numeroContrato;
 	private String gerenteContrato;
 	private List<Contato> contatos;
@@ -12,12 +12,12 @@ public class Fornecedor {
 	private boolean status;
 	
 	public String getAll() {
-		return id_fornecedor + "\n" + numeroContrato + "\n" + gerenteContrato + "\n" + contatos + "\n" + enderecos + "\n" + status;
+		return idFornecedor + "\n" + numeroContrato + "\n" + gerenteContrato + "\n" + contatos + "\n" + enderecos + "\n" + status;
 		
 	}
 	
 	public void setAll (int id, String nc, String gc, List<Contato> c, List<Endereco> e, boolean s ) {
-		id_fornecedor = id;
+		idFornecedor = id;
 		numeroContrato = nc;
 		gerenteContrato = gc;
 		contatos = c;
@@ -35,7 +35,7 @@ public class Fornecedor {
 	public Fornecedor(int id_fornecedor, String numeroContrato, String gerenteContrato, List<Contato> contato,
 			List<Endereco> endereco, boolean status) {
 		super();
-		this.id_fornecedor = id_fornecedor;
+		this.idFornecedor = id_fornecedor;
 		this.numeroContrato = numeroContrato;
 		this.gerenteContrato = gerenteContrato;
 		this.contatos = contatos;
@@ -43,12 +43,12 @@ public class Fornecedor {
 		this.status = status;
 	}
 
-	public int getId_fornecedor() {
-		return id_fornecedor;
+	public int getIdFornecedor() {
+		return idFornecedor;
 	}
 
 	public void setId_fornecedor(int id_fornecedor) {
-		this.id_fornecedor = id_fornecedor;
+		this.idFornecedor = id_fornecedor;
 	}
 
 	public String getNumeroContrato() {

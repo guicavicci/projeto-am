@@ -27,6 +27,12 @@ public class TesteFornecedor {
 		return textboo.equalsIgnoreCase("sim") ?  true : false;
 		
 	}
+	
+	static boolean status (String status) {
+		status = JOptionPane.showInputDialog(status);
+		return status.equalsIgnoreCase("desativar") ?  true : false;
+		
+	}
 
     public static void main(String[] args) {
         FornecedorBO bo = null;
@@ -63,7 +69,7 @@ public class TesteFornecedor {
                     while(newContato) {
                     	Contato contato = new Contato();
                     	
-                    	contato.setId_contato(
+                    	contato.setIdContato(
                     	textint("Digite o id do contato: "));
                     	
                     	contato.setTelefone(
@@ -95,7 +101,7 @@ public class TesteFornecedor {
                     
                     while(newEndereco) {
                     	Endereco endereco = new Endereco();
-                    	endereco.setId_endereco(textint("Digite o id do Endereco: "));
+                    	endereco.setIdEndereco(textint("Digite o id do Endereco: "));
                     	
                     	endereco.setRua(
                   		texto("Digite o rua:"));
@@ -127,7 +133,7 @@ public class TesteFornecedor {
                     boolean listaContato = textboo("Digite [sim] para listar os contatos, e [nao] para sair");
                     Contato cont = new Contato();
                     for (Contato c : forn.getContatos()) {
-                    System.out.println("Id do contato: " + c.getId_contato());
+                    System.out.println("Id do contato: " + c.getIdContato());
                     System.out.println("Telefone: " + c.getTelefone());
                     System.out.println("Email: " + c.getEmail());
                     System.out.println("Facebook: " + c.getFacebook());
@@ -145,8 +151,8 @@ public class TesteFornecedor {
                 else if (op == 'D') {
              	
                 	bo = new FornecedorBO();
-                	String d = bo.desativarFornecedor(
-                			textboo("Digite [1] para desativar o Fornecedor: "),
+                	String d = bo.statusFornecedor(
+                			status("Digite [deastivar] para desativar ou [ativar] para ativar o Fornecedor: "),
                 			textint("Digite o id do Fornecedor que será desativado: ")
                 			);
                 	System.out.println(d);

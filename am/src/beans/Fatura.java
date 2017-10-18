@@ -2,19 +2,19 @@ package beans;
 
 public class Fatura
 {
-	private int id_fatura;
+	private int idFatura;
 	private String numeroFatura;
     private String consumoKwh;
     private double valor;
 	
     public String getAll() {
     	
-    	return id_fatura + "\n" + numeroFatura + "\n" + consumoKwh + "\n" + valor;
+    	return idFatura + "\n" + numeroFatura + "\n" + consumoKwh + "\n" + valor;
     	
     }
     
     public void setAll(int id, String nf, String c, double v) {
-    	id_fatura = id;
+    	idFatura = id;
     	numeroFatura = nf;
     	consumoKwh = c;
     	valor = v;
@@ -28,18 +28,18 @@ public class Fatura
 
 	public Fatura(int id_fatura, String numeroFatura, String consumoKwh, double valor) {
 		super();
-		this.id_fatura = id_fatura;
+		this.idFatura = id_fatura;
 		this.numeroFatura = numeroFatura;
 		this.consumoKwh = consumoKwh;
 		this.valor = valor;
 	}
 
-	public int getId_fatura() {
-		return id_fatura;
+	public int getIdFatura() {
+		return idFatura;
 	}
 
-	public void setId_fatura(int id_fatura) {
-		this.id_fatura = id_fatura;
+	public void setIdFatura(int id_fatura) {
+		this.idFatura = id_fatura;
 	}
 
 	public String getNumeroFatura() {

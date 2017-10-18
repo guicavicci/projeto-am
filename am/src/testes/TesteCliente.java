@@ -30,6 +30,13 @@ public class TesteCliente {
 		return textboo.equalsIgnoreCase("sim") ?  true : false;
 		
 	}
+	
+	static boolean status (String status) {
+		status = JOptionPane.showInputDialog(status);
+		return status.equalsIgnoreCase("desativar") ?  true : false;
+		
+	}
+	
 
     public static void main(String[] args) {
         ClienteBO bo = new ClienteBO();
@@ -41,10 +48,10 @@ public class TesteCliente {
                         ("Escolha uma opção:\n "
                                 + "<G> - Gravar Cliente\n "
                                 + "<C> - Consultar\n "
-                                + "<A> - Alterar Telefone Cliente\n"
+                                + "<A> - Alterar Debito Pendente Cliente\n"
                                 + "<D> - Desativar").toUpperCase().charAt(0);
                 if (op=='G'){
-                    cliente.setId_cliente(	
+                    cliente.setIdCliente(	
                     		textint("Digite o id do cliente: "));
                     
                     cliente.setNumeroInstalacao(               
@@ -67,7 +74,7 @@ public class TesteCliente {
                     
                     	Fatura fat = new Fatura();
                     	
-                    	fat.setId_fatura(textint("Digite o id da fatura: "));
+                    	fat.setIdFatura(textint("Digite o id da fatura: "));
                     	
                     	fat.setNumeroFatura(texto("Digite o numero da fatura: "));
                     	
@@ -100,7 +107,7 @@ public class TesteCliente {
 			       	Fatura fat = new Fatura();
 			       	for (Fatura f : cliente.getFatura()) {
 			       		
-			       		System.out.println("Id da fatura: " + f.getId_fatura());
+			       		System.out.println("Id da fatura: " + f.getIdFatura());
 			       		System.out.println("Numero da fatura: " + f.getNumeroFatura());
 			       		System.out.println("Consumo KWH: " + f.getConsumoKwh());
 			       		System.out.println("Valor: " + f.getValor());
@@ -120,10 +127,10 @@ public class TesteCliente {
                 }
                 else if (op == 'D') {
                 
-                	String d = bo.desativarCliente(
+                	String d = bo.alterarStatusCliente(
                  			
-                 			textboo("Digite 1 para desativar o Cliente:"),
-                 			textint("Digite o id do Cliente que deseja desativar")
+                 			status("Digite [deastivar] para desativar ou [ativar] para ativar o Cliente: "),
+                 			textint("Digite o id do Cliente que deseja desativar: ")
                  			);
                 	System.out.println(d);
                 	

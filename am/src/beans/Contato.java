@@ -2,7 +2,7 @@ package beans;
 
 public class Contato {
 	
-	private int id_contato;
+	private int idContato;
 	private String telefone;
 	private String email;
 	private String facebook;
@@ -10,12 +10,12 @@ public class Contato {
 	
 	public String getAll (){
 		
-		return id_contato + "\n" + telefone + "\n" + email + "\n" + facebook;
+		return idContato + "\n" + telefone + "\n" + email + "\n" + facebook;
 		
 	} 
 	
 	public void setAll (int id, String t, String e, String f) {
-		id_contato = id;
+		idContato = id;
 		telefone = t;
 		email = e;
 		facebook = f;
@@ -27,16 +27,16 @@ public class Contato {
 	}
 	public Contato(int id_contato, String telefone, String email, String facebook) {
 		super();
-		this.id_contato = id_contato;
+		this.idContato = id_contato;
 		this.telefone = telefone;
 		this.email = email;
 		this.facebook = facebook;
 	}
-	public int getId_contato() {
-		return id_contato;
+	public int getIdContato() {
+		return idContato;
 	}
-	public void setId_contato(int id_contato) {
-		this.id_contato = id_contato;
+	public void setIdContato(int id_contato) {
+		this.idContato = id_contato;
 	}
 	public String getTelefone() {
 		return telefone;

@@ -25,7 +25,7 @@ public class ClienteDAO {
 	public String gravarCliente(Cliente cliente) throws Exception {
 		estrutura = con.prepareStatement
 				("INSERT INTO Cliente (ID_CLIENTE, NUMERO_INSTALACAO, DEBITO_PENDENTE, STATUS) VALUES(?,?,?,?)");
-		estrutura.setInt(1, cliente.getId_cliente());
+		estrutura.setInt(1, cliente.getIdCliente());
 		estrutura.setString(2, cliente.getNumeroInstalacao());
 		estrutura.setString(3, cliente.getDebitoPendente());
 		estrutura.setBoolean(4, cliente.isStatus());
@@ -47,7 +47,7 @@ public class ClienteDAO {
 		estrutura.setInt(1, i);
 		rs = estrutura.executeQuery();							
 		if(rs.next()) {
-			cliente.setId_cliente(rs.getInt("ID_CLIENTE"));
+			cliente.setIdCliente(rs.getInt("ID_CLIENTE"));
 			cliente.setNumeroInstalacao(rs.getString("numero_instalacao"));
 			cliente.setDebitoPendente(rs.getString("debito_pendente"));
 		
@@ -87,7 +87,7 @@ public class ClienteDAO {
 		return z;
 	}
 	
-	public int desativarCliente(boolean s, int i) throws Exception{
+	public int statusCliente(boolean s, int i) throws Exception{
 		PreparedStatement estrutura = con.prepareStatement
 		("UPDATE CLIENTE SET STATUS = ? WHERE ID_CLIENTE = ?");
 		estrutura.setBoolean(1, s);

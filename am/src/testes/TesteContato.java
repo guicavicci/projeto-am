@@ -70,7 +70,7 @@ public class TesteContato {
 	                       while(newContato) {
 	                    
 	                        
-	                    	contato.setId_contato(textint("Digite o id do contato: "));
+	                    	contato.setIdContato(textint("Digite o id do contato: "));
 	                    	
 	                    	contato.setTelefone(texto("Digite o telefone do contato: "));
 	                    	
@@ -99,7 +99,7 @@ public class TesteContato {
 	                    
 	                	for (Contato c : bo.retornaContato(textint("Digite o id do contato que deseja selecionar: "))) {
 	                		
-	                		System.out.println("Id do contato" + c.getId_contato());
+	                		System.out.println("Id do contato" + c.getIdContato());
 	                		System.out.println("Telefone: " + c.getTelefone());
 	                		System.out.println(("Email: " + c.getEmail()));
 	                		System.out.println("Facebook: " + c.getFacebook());

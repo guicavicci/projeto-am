@@ -39,7 +39,7 @@ public class TesteEndereco {
                         ("Escolha uma opção:\n "
                                 + "<G> - Gravar Endereco\n "
                                 + "<C> - Consultar\n "
-                                + "<A> - Mudar Cidade").toUpperCase().charAt(0);
+                                + "<A> - Alterar Cidade").toUpperCase().charAt(0);
                 if (op=='G'){
 
                     
@@ -54,7 +54,7 @@ public class TesteEndereco {
                     while (newEndereco){
                     	
                                            
-                    end.setId_endereco(	
+                    end.setIdEndereco(	
                     		textint("Digite o id do endereco: "));
                     
                     end.setRua(                    
@@ -84,7 +84,7 @@ public class TesteEndereco {
                 	
                 	for (Endereco e : bo.retornaEndereco(textint("Digite o id do Endereco: "))) {
                 		
-                		System.out.println("Id do Endereco: " + e.getId_endereco());
+                		System.out.println("Id do Endereco: " + e.getIdEndereco());
                 		System.out.println("Rua: " + e.getRua());
                 		System.out.println("Numero" + e.getRua());
                 		System.out.println("Cidade" + e.getCidade());

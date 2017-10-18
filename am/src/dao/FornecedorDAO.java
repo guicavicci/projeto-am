@@ -27,7 +27,7 @@ public class FornecedorDAO {
         public String adcFornecedor(Fornecedor forn) throws Exception {
             estrutura = con.prepareStatement
                     ("INSERT INTO Fornecedor (ID_FORNECEDOR, NUMERO_CONTRATO, GERENTE_CONTRATO, STATUS) VALUES(?,?,?,?)");
-            estrutura.setInt(1, forn.getId_fornecedor());
+            estrutura.setInt(1, forn.getIdFornecedor());
             estrutura.setString(2, forn.getNumeroContrato());
             estrutura.setString(3, forn.getGerenteContrato());
             estrutura.setBoolean(4, forn.isStatus());
@@ -62,7 +62,7 @@ public class FornecedorDAO {
                 
                 //Contato
                 ContatoDAO daocont = new ContatoDAO ();
-                forn.setContatos(daocont.getContatoPorFornecedor(forn.getId_fornecedor()));
+                forn.setContatos(daocont.getContatoPorFornecedor(forn.getIdFornecedor()));
                 
                 //Endereco
                 EnderecoDAO daoend = new EnderecoDAO ();
@@ -96,7 +96,7 @@ public class FornecedorDAO {
             return "Alterado com sucesso";
         }
         
-        public String DesativarFornecedor(boolean s, int i) throws Exception {
+        public String statusFornecedor(boolean s, int i) throws Exception {
             PreparedStatement estrutura = con.prepareStatement
             ("UPDATE Fornecedor SET STATUS = ? WHERE ID_FORNECEDOR = ?");
             estrutura.setBoolean(1, s);

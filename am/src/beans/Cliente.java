@@ -3,20 +3,20 @@ package beans;
 import java.util.List;
 
 public class Cliente {
-    private int id_cliente;
+    private int idCliente;
 	private String numeroInstalacao;
     private String debitoPendente;
     private boolean status;
     private List<Fatura> fatura;
     
     public String getAll() {
-        return id_cliente + "\n" + numeroInstalacao + "\n" + debitoPendente + "\n" + "\n" + status + "\n" + fatura;
+        return idCliente + "\n" + numeroInstalacao + "\n" + debitoPendente + "\n" + "\n" + status + "\n" + fatura;
         
     }
     
  
     public void setAll(int id, String ac, String ni, String dp, boolean s, List<Fatura> f) {
-        id_cliente=id;
+        idCliente=id;
         numeroInstalacao=ni;
         debitoPendente=dp;
         status=s;
@@ -33,7 +33,7 @@ public class Cliente {
 	public Cliente(int id_cliente, String numeroInstalacao, String debitoPendente, boolean status,
 			List<Fatura> fatura) {
 		super();
-		this.id_cliente = id_cliente;
+		this.idCliente = id_cliente;
 		this.numeroInstalacao = numeroInstalacao;
 		this.debitoPendente = debitoPendente;
 		this.status = status;
@@ -41,13 +41,13 @@ public class Cliente {
 	}
 
 
-	public int getId_cliente() {
-		return id_cliente;
+	public int getIdCliente() {
+		return idCliente;
 	}
 
 
-	public void setId_cliente(int id_cliente) {
-		this.id_cliente = id_cliente;
+	public void setIdCliente(int id_cliente) {
+		this.idCliente = id_cliente;
 	}
 
 

@@ -1,17 +1,17 @@
 package beans;
 
 public class Endereco {
-    private int id_endereco;
+    private int idEndereco;
     private String rua;
     private int numero;
     private String cidade;
 
     public String getAll() {
-        return  id_endereco + "\n" + rua + "\n" + numero + "\n" + cidade; 
+        return  idEndereco + "\n" + rua + "\n" + numero + "\n" + cidade; 
     }
     
     public void setAll(int id, String r, int n, String cid){
-        id_endereco = id;
+        idEndereco = id;
         rua = r;
         numero = n;
         cidade = cid;
@@ -25,18 +25,18 @@ public class Endereco {
 
 	public Endereco(int id_endereco, String rua, int numero, String cidade) {
 		super();
-		this.id_endereco = id_endereco;
+		this.idEndereco = id_endereco;
 		this.rua = rua;
 		this.numero = numero;
 		this.cidade = cidade;
 	}
 
-	public int getId_endereco() {
-		return id_endereco;
+	public int getIdEndereco() {
+		return idEndereco;
 	}
 
-	public void setId_endereco(int id_endereco) {
-		this.id_endereco = id_endereco;
+	public void setIdEndereco(int id_endereco) {
+		this.idEndereco = id_endereco;
 	}
 
 	public String getRua() {
