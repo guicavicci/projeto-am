@@ -41,7 +41,8 @@ public class TesteEndereco {
                         ("Escolha uma opção:\n "
                                 + "<G> - Gravar Endereco\n "
                                 + "<C> - Consultar\n "
-                                + "<A> - Alterar Cidade").toUpperCase().charAt(0);
+                                + "<A> - Alterar Endereco\n"
+                                + "<D> - Deletar Endereco").toUpperCase().charAt(0);
                 if (op=='G'){
 
                     
@@ -107,6 +108,14 @@ public class TesteEndereco {
 
 
                 }
+                else if (op=='D'){
+                    String x = bo.deletarEndereco(
+                      		textint("Digite o id do endereco que sera deletado: "));
+                      		              		
+                      System.out.println(x);
+
+
+                  }
                                
                 else{
                     System.out.println("Opção inválida!!!");

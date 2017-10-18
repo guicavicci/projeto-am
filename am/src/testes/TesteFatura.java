@@ -48,7 +48,8 @@ public class TesteFatura
                      ("Escolha uma opção:\n "
                          + "<G> - Gravar fatura\n "
                          + "<A> - Atualizar taxa de fatura\n "
-                         + "<P> - Pesquisar fatura").toUpperCase().charAt(0);
+                         + "<P> - Pesquisar fatura\n"
+                         + "<D> - Deletar fatura").toUpperCase().charAt(0);
                 
                 if (op=='G')
                 {
@@ -117,6 +118,16 @@ public class TesteFatura
                 	String x = bo.acrescimoJuros(
                 			textdoub("Insira o valor que será acrescentado de juros %: "),
                 			textint("Digite o id da Fatura que sofrerá o acescimo: "));
+                	
+                	System.out.println(x);
+
+                }
+                
+                else if (op=='D')
+                {
+                	
+                	String x = bo.apagarFatura(
+                			textint("Digite o id da Fatura que ser� apagada: "));
                 	
                 	System.out.println(x);
 

@@ -121,7 +121,7 @@ public class ContatoDAO {
 	
 	
 	public String deletarContato (int i) throws Exception {
-		estrutura=con.prepareStatement("DELETE FROM CONTATO WHERE ID = ?");
+		estrutura=con.prepareStatement("DELETE FROM CONTATO WHERE ID_CONTATO = ?");
 		estrutura.setInt(1, i);
 		int x = estrutura.executeUpdate();
 		

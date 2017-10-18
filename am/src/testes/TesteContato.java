@@ -49,7 +49,8 @@ public class TesteContato {
 	                     ("Escolha uma opção:\n "
 	                         + "<G> - Gravar Contato\n "
 	                         + "<A> - Atualizar Contato\n "
-	                         + "<P> - Pesquisar Contato").toUpperCase().charAt(0);
+	                         + "<P> - Pesquisar Contato\n "
+	                         + "<D> - Deletar Contato").toUpperCase().charAt(0);
 	                
 	                if (op=='G')
 	                {
@@ -114,6 +115,16 @@ public class TesteContato {
 	                	String x = bo.alterarTelefonePorFornecedor(
 	                			texto("Insira o novo telefone: "),
 	                			textint("Digite o id do contato que terá o telefone alterado: "));
+	                	
+	                	System.out.println(x);
+
+	                }
+	                
+	                else if (op=='D')
+	                {
+	                	
+	                	String x = bo.apagarContato(
+	                			textint("Digite o id do contato que sera deletado: "));
 	                	
 	                	System.out.println(x);
 

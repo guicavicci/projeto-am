@@ -53,6 +53,15 @@ public class FaturaBO{
 	 
 	 return "Juros adicionado!";
  }
+ 
+ public static String apagarFatura (int i) throws Exception {
+	 
+	 FaturaDAO dao = new FaturaDAO ();
+	 dao.deletarFatura(i);
+	 dao.fechar();
+	 
+	 return "Fatura apagada!";
+ }
    
 }
 

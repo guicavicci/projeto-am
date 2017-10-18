@@ -138,7 +138,17 @@ public class FaturaDAO
         PreparedStatement estrutura = con.prepareStatement
         ("UPDATE FATURA SET VALOR = VALOR + ?/100*VALOR WHERE ID_FATURA = ?");
         estrutura.setDouble(1, taxa);
-        estrutura.setLong(2, i);
+        estrutura.setInt(2, i);
+        int x = estrutura.executeUpdate();
+        estrutura.close();
+        return x;
+    }
+    
+    public int deletarFatura(int i) throws Exception
+    {
+        PreparedStatement estrutura = con.prepareStatement
+        ("DELETE FROM FATURA WHERE ID_FATURA = ?");
+        estrutura.setInt(1, i);
         int x = estrutura.executeUpdate();
         estrutura.close();
         return x;
