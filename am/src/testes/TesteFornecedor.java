@@ -41,7 +41,7 @@ public class TesteFornecedor {
         try{
             do{
                 char op =texto
-                        ("Escolha uma opção:\n "
+                        ("Escolha uma opcao:\n "
                                 + "<G> - Gravar Fornecedor\n "
                                 + "<C> - Consultar\n "
                                 + "<A> - Alterar Gerente\n"
@@ -94,7 +94,7 @@ public class TesteFornecedor {
                     
                 
                 //Endereco
-                	boolean newEndereco = textboo("Digite [sim] para cadastrar um novo endereco, e [não] para sair");
+                	boolean newEndereco = textboo("Digite [sim] para cadastrar um novo endereco, e [nao] para sair");
                     
                     if(newEndereco) {
                     	fornecedor.setEnderecos(new ArrayList<Endereco>());
@@ -114,7 +114,7 @@ public class TesteFornecedor {
                   		texto("Digite a cidade:"));
                     	
                   		fornecedor.getEnderecos().add(endereco);
-                  		newEndereco = textboo("Digite [sim] para cadastrar um novo endereco, e [não] para sair");
+                  		newEndereco = textboo("Digite [sim] para cadastrar um novo endereco, e [nao] para sair");
                     }
                     
                     
@@ -170,7 +170,7 @@ public class TesteFornecedor {
                 	
                 }
                 else{
-                    System.out.println("Opção inválida!!!");
+                    System.out.println("Opcao invalida!!!");
                 }
             }while(JOptionPane.showConfirmDialog
                     (null, "Continuar?", "FornecedorBO",

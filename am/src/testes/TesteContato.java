@@ -46,7 +46,7 @@ public class TesteContato {
 	            do
 	            {
 	                char op =JOptionPane.showInputDialog
-	                     ("Escolha uma opção:\n "
+	                     ("Escolha uma opcao:\n "
 	                         + "<G> - Gravar Contato\n "
 	                         + "<A> - Atualizar Contato\n "
 	                         + "<P> - Pesquisar Contato\n "
@@ -114,7 +114,7 @@ public class TesteContato {
 	                	
 	                	String x = bo.alterarTelefonePorFornecedor(
 	                			texto("Insira o novo telefone: "),
-	                			textint("Digite o id do contato que terá o telefone alterado: "));
+	                			textint("Digite o id do contato que tera o telefone alterado: "));
 	                	
 	                	System.out.println(x);
 
@@ -131,7 +131,7 @@ public class TesteContato {
 	                }
 	                else
 	                {
-	                    System.out.println("Opção inválida!!!");
+	                    System.out.println("Opcao invalida!!!");
 	                }
 	            }
 	            while(JOptionPane.showConfirmDialog

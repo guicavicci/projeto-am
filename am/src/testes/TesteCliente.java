@@ -47,7 +47,7 @@ public class TesteCliente {
             bo = new ClienteBO();
             do{
                 char op =texto
-                        ("Escolha uma opção:\n "
+                        ("Escolha uma opcao:\n "
                                 + "<G> - Gravar Cliente\n "
                                 + "<C> - Consultar\n "
                                 + "<A> - Alterar Debito Pendente Cliente\n"
@@ -138,7 +138,7 @@ public class TesteCliente {
                 	
                 }
                 else{
-                    System.out.println("Opção inválida!!!");
+                    System.out.println("Opcao invalida!!!");
                 }
             }while(JOptionPane.showConfirmDialog
                     (null, "Continuar?", "ClienteDAO",

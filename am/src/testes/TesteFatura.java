@@ -45,7 +45,7 @@ public class TesteFatura
             do
             {
                 char op =JOptionPane.showInputDialog
-                     ("Escolha uma opção:\n "
+                     ("Escolha uma opcao:\n "
                          + "<G> - Gravar fatura\n "
                          + "<A> - Atualizar taxa de fatura\n "
                          + "<P> - Pesquisar fatura\n"
@@ -116,8 +116,8 @@ public class TesteFatura
                 {
                 	
                 	String x = bo.acrescimoJuros(
-                			textdoub("Insira o valor que será acrescentado de juros %: "),
-                			textint("Digite o id da Fatura que sofrerá o acescimo: "));
+                			textdoub("Insira o valor que sera acrescentado de juros %: "),
+                			textint("Digite o id da Fatura que sofrera o acescimo: "));
                 	
                 	System.out.println(x);
 
@@ -127,14 +127,14 @@ public class TesteFatura
                 {
                 	
                 	String x = bo.apagarFatura(
-                			textint("Digite o id da Fatura que ser� apagada: "));
+                			textint("Digite o id da Fatura que sera apagada: "));
                 	
                 	System.out.println(x);
 
                 }
                 else
                 {
-                    System.out.println("Opção inválida!!!");
+                    System.out.println("Opcao invalida!!!");
                 }
             }
             while(JOptionPane.showConfirmDialog

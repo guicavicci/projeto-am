@@ -38,7 +38,7 @@ public class TesteEndereco {
         try{
             do{
                 char op =texto
-                        ("Escolha uma opção:\n "
+                        ("Escolha uma opcao:\n "
                                 + "<G> - Gravar Endereco\n "
                                 + "<C> - Consultar\n "
                                 + "<A> - Alterar Endereco\n"
@@ -118,7 +118,7 @@ public class TesteEndereco {
                   }
                                
                 else{
-                    System.out.println("Opção inválida!!!");
+                    System.out.println("Opcao invalida!!!");
                 }
             }while(JOptionPane.showConfirmDialog
                     (null, "Continuar?", "EnderecoDAO",
