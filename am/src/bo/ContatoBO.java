@@ -1,5 +1,6 @@
 package bo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import beans.Contato;
@@ -10,7 +11,18 @@ public class ContatoBO {
 	
 	public static String gravarContato (Fornecedor forn) throws Exception {
 		
+		if (forn.getIdFornecedor()<0) {
+			
+			return "Digite um ID valido!";
+		}
+		
 		ContatoDAO dao = new ContatoDAO();
+		
+		if (forn.getNumeroContrato().length()>20) {
+			
+			return "Quantidade excedida de caracteres!";
+		}
+		
 		dao.gravarContato(forn);
 		
 		return "Contato gravado com sucesso!";
@@ -20,6 +32,13 @@ public class ContatoBO {
 	
 	public static List<Contato> retornaContatoPorFornecedor (int i) throws Exception {
 		ContatoDAO dao = new ContatoDAO();
+		
+		if (i <= 0) {
+		List<Contato> z = new ArrayList<>();
+		
+		return z;
+			
+		}
 		List<Contato> c = dao.getContatoPorFornecedor(i);
 		dao.fechar();
 		
@@ -29,6 +48,14 @@ public class ContatoBO {
 	
 	public static List<Contato> retornaContato(int i) throws Exception {
 		ContatoDAO dao = new ContatoDAO();
+		
+		if (i <= 0) {
+		List<Contato> z = new ArrayList<>();
+		
+		return z;
+		
+		}
+		
 		List<Contato> c = dao.getContato(i);
 		dao.fechar();
 		
@@ -37,7 +64,15 @@ public class ContatoBO {
 	}
 	
 	public static String alterarTelefonePorFornecedor (String t, int i) throws Exception {
+		
+		if (t.length()>10) {
+			
+			return "Excedeu o limite de caracteres";
+		}
+		
+		//Abre a conexao
 		ContatoDAO dao = new ContatoDAO();
+		
 		dao.mudarTelefone(t, i);
 		dao.fechar();		
 		
