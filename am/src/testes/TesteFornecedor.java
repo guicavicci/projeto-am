@@ -56,7 +56,7 @@ public class TesteFornecedor {
                     fornecedor.setGerenteContrato(
                     		texto("Digite o nome do gerente do contrato: "));
                     fornecedor.setStatus(		
-                    		textboo("Deseja criar um usuario com status ativo? (0 ou 1)"));
+                    		textboo("Status (0 ativo ou 1 desativo): "));
                     		                    		
                     //Contato
                     
@@ -84,7 +84,7 @@ public class TesteFornecedor {
                     	
                     	fornecedor.getContatos().add(contato);
                     	
-                    	newContato = textboo ("Digite [sim] para cadastrar um novo contato, e [não] para sair");
+                    	newContato = textboo ("Digite [sim] para cadastrar um novo contato, e [nao] para sair");
                     	
                     }
                     

@@ -63,7 +63,7 @@ public class TesteCliente {
                     texto("Digite o debito pendente: "));
                     		
                     cliente.setStatus(
-                    		textboo("Digite o status: "));
+                    		textboo("Status (0 ativo ou 1 desativo): "));
                     
                     boolean newFatura = textboo ("Digite [sim] para inserir uma fatura, ou [nao] para sair.");
                     
