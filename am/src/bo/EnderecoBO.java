@@ -1,5 +1,6 @@
 package bo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import beans.Endereco;
@@ -9,6 +10,11 @@ import dao.EnderecoDAO;
 public class EnderecoBO {
 	
 	public static String adicionarNovoEndereco(Fornecedor forn) throws Exception {
+		if (forn.getIdFornecedor()<=0) {
+			return "ID invalido!";
+			
+		}
+		
 		EnderecoDAO dao = new EnderecoDAO();
 		dao.gravarEndereco(forn);
 		dao.fechar();
@@ -18,6 +24,13 @@ public class EnderecoBO {
 	
 	
 	public static List<Endereco> retornaEnderecoPorFornecedor (int i) throws Exception {
+		
+	if (i <0) {
+			
+			List<Endereco> x = new ArrayList<Endereco>();
+			
+		}
+	
 		EnderecoDAO dao = new EnderecoDAO();
 		List<Endereco> listaEnd = dao.getEnderecoPorFornecedor(i);
 		dao.fechar();
@@ -27,6 +40,13 @@ public class EnderecoBO {
 	}
 	
 	public static List<Endereco> retornaEndereco (int i) throws Exception {
+		
+		if (i <0) {
+			
+			List<Endereco> x = new ArrayList<Endereco>();
+			
+		}
+		
 		EnderecoDAO dao = new EnderecoDAO();
 		List<Endereco> listaEnd = dao.getEndereco(i);
 		dao.fechar();
@@ -35,6 +55,12 @@ public class EnderecoBO {
 		
 	}
 	public static String alterarEndereco (String r,int n, String c, int i) throws Exception {
+		
+		if (r.length()>30 || c.length() > 30) {
+			
+			return "Excedeu limite de caracteres!";
+			
+		}
 		
 		EnderecoDAO dao = new EnderecoDAO();
 		dao.mudarEndereco(r, n, c, i);
