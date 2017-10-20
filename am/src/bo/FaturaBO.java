@@ -22,6 +22,12 @@ public class FaturaBO{
  
  public static List<Fatura> mostrarFaturaPorCliente (int i) throws Exception {
 	 
+	 if (i < 1) {
+		 
+		 List<Fatura> x = new ArrayList<>();
+		 return  x;
+	 }
+	 
 	 FaturaDAO dao = new FaturaDAO();
 
 	 List<Fatura>  fat = dao.consultarPorCliente(i);
@@ -46,6 +52,10 @@ public class FaturaBO{
  }
  
  public static String acrescimoJuros (double j, int i) throws Exception {
+	 if (i < 0) {
+		 
+		 return "Digite um id valido!";
+	 }
 	 
 	 FaturaDAO dao = new FaturaDAO ();
 	 dao.adicionarJuros(j, i);

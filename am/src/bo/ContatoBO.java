@@ -11,18 +11,8 @@ public class ContatoBO {
 	
 	public static String gravarContato (Fornecedor forn) throws Exception {
 		
-		if (forn.getIdFornecedor()<0) {
-			
-			return "Digite um ID valido!";
-		}
-		
-		ContatoDAO dao = new ContatoDAO();
-		
-		if (forn.getNumeroContrato().length()>20) {
-			
-			return "Quantidade excedida de caracteres!";
-		}
-		
+		//Abre conexao
+		ContatoDAO dao = new ContatoDAO();	
 		dao.gravarContato(forn);
 		
 		return "Contato gravado com sucesso!";
