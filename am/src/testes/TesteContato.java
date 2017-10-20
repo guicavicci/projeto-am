@@ -48,7 +48,7 @@ public class TesteContato {
 	                char op =JOptionPane.showInputDialog
 	                     ("Escolha uma opcao:\n "
 	                         + "<G> - Gravar Contato\n "
-	                         + "<A> - Atualizar Contato\n "
+	                         + "<A> - Alterar telefone Contato\n "
 	                         + "<P> - Pesquisar Contato\n "
 	                         + "<D> - Deletar Contato").toUpperCase().charAt(0);
 	                

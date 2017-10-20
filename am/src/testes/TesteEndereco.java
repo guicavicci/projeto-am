@@ -89,8 +89,8 @@ public class TesteEndereco {
                 		
                 		System.out.println("Id do Endereco: " + e.getIdEndereco());
                 		System.out.println("Rua: " + e.getRua());
-                		System.out.println("Numero" + e.getRua());
-                		System.out.println("Cidade" + e.getCidade());
+                		System.out.println("Numero: " + e.getRua());
+                		System.out.println("Cidade: " + e.getCidade());
                 		
 						
 					}
@@ -102,7 +102,7 @@ public class TesteEndereco {
                     		texto("Digite a nova rua: "),
                     		textint("Digite o novo numero: "),
                     		texto ("Digite a nova cidade: "),
-                    		textint("Digite o id do endereco que será alterado: "));
+                    		textint("Digite o id do endereco que sera alterado: "));
                     		              		
                     System.out.println(x);
 
