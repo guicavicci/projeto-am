@@ -8,7 +8,16 @@ public class ClienteBO {
 	public static String AdicionarNovoCliente (Cliente cli) throws Exception {
 		
 		//Abre conexão
+		
 		ClienteDAO dao = new ClienteDAO();
+		
+		if(dao.selecionarCliente(cli.getIdCliente()).getIdCliente()>0) {
+			dao.fechar();
+			
+			return "Esse ID ja esta cadastrado em nosso banco de dados!";
+			
+			
+		}
 		dao.gravarCliente(cli);
 		dao.fechar();
 		
