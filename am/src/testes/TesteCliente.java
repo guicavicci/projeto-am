@@ -120,11 +120,12 @@ public class TesteCliente {
                 
                 }
                 else if (op=='A'){
-                	bo.modificarDebitoPendente(
+                	String x = bo.modificarDebitoPendente(
 							
-							texto ("Digite a valor do novo debito pendente : "),
+							texto ("Digite o novo novo debito pendente : "),
 							textint ("Digite o id do Cliente : "));
                 	
+                	System.out.println(x);
 
                 }
                 else if (op == 'S') {

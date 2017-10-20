@@ -7,7 +7,7 @@ public class ClienteBO {
 	
 	public static String AdicionarNovoCliente (Cliente cli) throws Exception {
 		
-		//Abre conex√£o
+		//Abre conexaoo
 		
 		ClienteDAO dao = new ClienteDAO();
 		
@@ -27,6 +27,10 @@ public class ClienteBO {
 	
 	public static Cliente consultarCliente (int id) throws Exception {
 		
+		if (id < 1) {
+			return new Cliente ();
+		}
+		
 		ClienteDAO dao = new ClienteDAO ();
 		Cliente cli = dao.selecionarCliente(id);
 		dao.fechar();
@@ -41,7 +45,15 @@ public class ClienteBO {
 	
 	public static String alterarStatusCliente (boolean s, int i) throws Exception {
 		
+		if (i < 0) {
+			
+			return "Esse cliente n„o existe em nosso banco de dados!";
+		}
+		
+		//Abre conexao
 		ClienteDAO dao = new ClienteDAO ();
+		
+
 		dao.statusCliente(s, i);
 		dao.fechar();
 		return "Cliente modificado!";
@@ -50,6 +62,11 @@ public class ClienteBO {
 	}
 	
 	public static String modificarDebitoPendente (String d, int i) throws Exception {
+		
+		if (d.length()>20) {
+			
+			return "Quantidade de caracteres excedido";
+		}
 		
 		ClienteDAO dao = new ClienteDAO();
 		dao.atualizarDebitoPendente(d, i);
